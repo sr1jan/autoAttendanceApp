@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "520062746033",
+    "firebase_url": "https://autoattendance-70e34.firebaseio.com",
+    "project_id": "autoattendance-70e34",
+    "storage_bucket": "autoattendance-70e34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520062746033:android:b412fff0448ccf882ed190",
+        "android_client_info": {
+          "package_name": "com.firstproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520062746033-emu4frbuqj8gtvt156u9ou4bv310f1d1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6KEpZyntZv_vdUQkQ6Dyw-d5bGn1p8ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520062746033-emu4frbuqj8gtvt156u9ou4bv310f1d1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
