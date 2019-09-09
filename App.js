@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, View, StatusBar} from 'react-native';
+import Routes from './src/Routes';
 
-export default class HelloWorldApp extends Component {
+
+export default class App extends Component {
+
+
   render() {
+    
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Hello, world!</Text>
+      
+      <View style={styles.container}>
+      <StatusBar backgroundColor="#27057f" barStyle="light-content" />
+    
+        <Routes/>
+  
       </View>
     );
   }
 }
+
+
+
+const styles = StyleSheet.create({
+  container: {
+   flexGrow: 1,
+  }
+ 
+});
+
+
