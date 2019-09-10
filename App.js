@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+//import { Text, View,StyleSheet } from 'react-native';
 
-export default class HelloWorldApp extends Component {
+import d from './src/components/DrawerNavigator.js';
+
+
+export default class App extends Component {
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Hello, world!</Text>
-      </View>
+    	d
     );
   }
 }
+
+
