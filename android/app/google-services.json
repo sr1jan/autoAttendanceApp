@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "520062746033",
-    "firebase_url": "https://autoattendance-70e34.firebaseio.com",
-    "project_id": "autoattendance-70e34",
-    "storage_bucket": "autoattendance-70e34.appspot.com"
+    "project_number": "715252739729",
+    "firebase_url": "https://project-91479.firebaseio.com",
+    "project_id": "project-91479",
+    "storage_bucket": "project-91479.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:520062746033:android:b412fff0448ccf882ed190",
+        "mobilesdk_app_id": "1:715252739729:android:1be7965e87c7dea4085930",
         "android_client_info": {
-          "package_name": "com.firstproject"
+          "package_name": "com.project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "520062746033-emu4frbuqj8gtvt156u9ou4bv310f1d1.apps.googleusercontent.com",
+          "client_id": "715252739729-f8l4sepuokk8rut39l1dlc7ohbe9hscv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD6KEpZyntZv_vdUQkQ6Dyw-d5bGn1p8ts"
+          "current_key": "AIzaSyDqYNKj1j0_gKBXRLkS6kqywkpvoJrSd3Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "520062746033-emu4frbuqj8gtvt156u9ou4bv310f1d1.apps.googleusercontent.com",
+              "client_id": "715252739729-f8l4sepuokk8rut39l1dlc7ohbe9hscv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
