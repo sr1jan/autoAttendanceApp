@@ -8,15 +8,20 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.1",
+    "firebase": "^6.6.2",
     "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react-native": "0.60.5",
+    "react-native-firebase": "^5.5.6",
+    "react-native-image-picker": "^1.1.0",
+    "rn-fetch-blob": "^0.10.16"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
     "@babel/runtime": "7.5.5",
     "@react-native-community/eslint-config": "0.0.3",
     "babel-jest": "24.9.0",
-    "eslint": "6.2.2",
+    "eslint": "^5.16.0",
     "jest": "24.9.0",
     "metro-react-native-babel-preset": "0.54.1",
     "react-test-renderer": "16.8.6"
