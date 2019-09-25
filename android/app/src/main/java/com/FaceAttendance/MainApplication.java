@@ -1,4 +1,4 @@
-package com.firstproject;
+package com.FaceAttendance;
 
 import android.app.Application;
 import android.util.Log;

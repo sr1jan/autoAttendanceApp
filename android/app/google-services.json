@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1054623266645:android:5f73540592b330878ce1dc",
+        "mobilesdk_app_id": "1:1054623266645:android:4f234fac66ec8b848ce1dc",
         "android_client_info": {
-          "package_name": "com.firstproject"
+          "package_name": "com.FaceAttendance"
         }
       },
       "oauth_client": [

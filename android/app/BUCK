@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.firstproject",
+    package = "com.FaceAttendance",
 )
 
 android_resource(
     name = "res",
-    package = "com.firstproject",
+    package = "com.FaceAttendance",
     res = "src/main/res",
 )
 
