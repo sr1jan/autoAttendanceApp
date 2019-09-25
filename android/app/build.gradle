@@ -189,8 +189,6 @@ android {
 }
 
 dependencies {
-    implementation project(':rn-fetch-blob')
-    implementation project(':react-native-firebase')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
