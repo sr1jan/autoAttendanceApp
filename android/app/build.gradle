@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.firstproject"
+        applicationId "com.FaceAttendance"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
