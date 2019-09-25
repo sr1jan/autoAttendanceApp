@@ -60,3 +60,6 @@ buck-out/
 
 # vscode
 .vscode
+
+# firebase credentials
+android/app/google-services.json
