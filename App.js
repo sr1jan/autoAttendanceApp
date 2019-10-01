@@ -37,7 +37,7 @@ export default class App extends Component {
   }
 
   uploadImage = async (image, imageName) => {
-    return firebase.storage().ref('images/' + imageName).putFile(image.path);    
+    return firebase.storage().ref(imageName).putFile(image.path);
   }
 
   render() {
