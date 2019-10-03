@@ -4,13 +4,14 @@ import { View, Image, Button, StyleSheet, Alert } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'react-native-firebase';
 
-const { app } = firebase.storage();
-console.log(app);
-
 export default class App extends Component {
   state = {
     photo: null,
   };
+
+  componentDidMount(){
+    firebase.auth().signInAnonymously();
+  }
 
   handleChoosePhoto = () => {
     const options = {
@@ -40,6 +41,14 @@ export default class App extends Component {
     return firebase.storage().ref(imageName).putFile(image.path);
   }
 
+  getStudents = async () => {
+    const ref = firebase.firestore().doc('students/srijan');
+    const { data } = await ref.get({ source: 'server' });
+
+    Alert.alert('Name:', data.name)
+
+  }
+
   render() {
     const { photo } = this.state;
     return (
@@ -52,6 +61,7 @@ export default class App extends Component {
          <Button title="Choose Photo" color="black" onPress={this.handleChoosePhoto} />
         </View>
         <View style={styles.img_container}>
+          <Button title="Get List" color="black" onPress={this.getStudents} />
           {photo && (
             <Image source={{ uri: photo.uri }} style={styles.userImg} />
           )}
