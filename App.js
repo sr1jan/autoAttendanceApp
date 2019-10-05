@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Button, StyleSheet, Alert } from 'react-native';
+import { View, Image, ScrollView, TouchableOpacity, StyleSheet, Alert, FlatList, Text } from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'react-native-firebase';
@@ -7,6 +7,7 @@ import firebase from 'react-native-firebase';
 export default class App extends Component {
   state = {
     photo: null,
+    students: [],
   };
 
   componentDidMount(){
@@ -42,15 +43,19 @@ export default class App extends Component {
   }
 
   getStudents = async () => {
-    const ref = firebase.firestore().doc('students/srijan');
-    const { data } = await ref.get({ source: 'server' });
-
-    Alert.alert('Name:', data.name)
-
+    this.setState({ students: [] });
+    const ref = firebase.firestore().collection('students').get();
+    ref.then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        this.setState(prevState => ({
+          students: [...prevState.students, doc.data() ]
+        }));
+      });
+    });
   }
 
   render() {
-    const { photo } = this.state;
+    const { photo, students } = this.state;
     return (
       <View style={styles.main}>
         <View style={styles.container}>
@@ -58,15 +63,27 @@ export default class App extends Component {
             source={require('./src/images/logo.png')}
             style={styles.stretch}
           />
-         <Button title="Choose Photo" color="black" onPress={this.handleChoosePhoto} />
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <TouchableOpacity style={{ backgroundColor: 'white', alignItems: 'center', width: 135 }} onPress={this.handleChoosePhoto}>
+              <Text style={{ color: 'black', padding: 5 }}>Choose Photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{ backgroundColor: 'black', alignItems: 'center', width: 85 }} onPress={this.getStudents}>
+              <Text style={{ color: 'white', padding: 5 }}>Get List</Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <View style={styles.img_container}>
-          <Button title="Get List" color="black" onPress={this.getStudents} />
           {photo && (
             <Image source={{ uri: photo.uri }} style={styles.userImg} />
           )}
+          {students && (
+            <FlatList
+              data={students}
+              renderItem={({item}) => <Text style={{ fontSize: 18, padding: 5 }}>{item.id} : {item.name}</Text>}
+            />
+          )} 
         </View>
-      </View>
+     </View>
     );
   }
 }
@@ -94,9 +111,8 @@ const styles = StyleSheet.create({
   },
 
   userImg: {
-    width: 300,
-    height: 300,
-    position: 'relative',
+    width: 250,
+    height: 180,
   },
 
   img_container: {
