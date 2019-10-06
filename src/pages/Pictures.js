@@ -15,7 +15,6 @@ export default class Attend extends Component {
     subject:'',
     Ltype: '',
     students: '',
-
    }
 	
 	 render() {
