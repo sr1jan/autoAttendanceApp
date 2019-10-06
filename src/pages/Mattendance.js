@@ -50,14 +50,9 @@ return (
                 { label: 'DLDA', value: 'DLDA' },
                 { label: 'ECCF', value: 'ECCF' },
                 { label: 'DIS', value: 'DIS' },
-                 { label: 'AM-3', value: 'AM-3' },
+                { label: 'AM-3', value: 'AM-3' },
                 { label: 'OOPM', value: 'OOPM' },
-                 { label: 'DATA Structure', value: 'DATA Structure' },
-                { label: 'Practical DLDA', value: 'PDLDA' },
-                { label: 'Practical DS', value: 'PDS' },
-                { label: 'Practical ECCF', value: 'PDS' },
-                { label: 'Practical OOPM', value: 'POOPM' },
-                { label: 'Event', value: 'Event' },
+                { label: 'DS, value: 'DS' },
 
             ]}
         />
@@ -67,7 +62,6 @@ return (
             items={[
                 { label: 'Practical', value: 'Practical' },
                 { label: 'Theory', value: 'Theory' },
-                { label: 'Event', value: 'Event' },
                 
             ]}
         />
