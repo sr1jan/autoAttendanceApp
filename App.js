@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, ScrollView, TouchableOpacity, StyleSheet, Alert, FlatList, Text } from 'react-native';
+import { View, Image, TextInput, ScrollView, TouchableOpacity, StyleSheet, Alert, FlatList, Text } from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'react-native-firebase';
@@ -8,6 +8,8 @@ export default class App extends Component {
   state = {
     photo: null,
     students: [],
+    subject: '',
+    type: '',
   };
 
   componentDidMount(){
@@ -42,6 +44,14 @@ export default class App extends Component {
     return firebase.storage().ref(imageName).putFile(image.path);
   }
 
+  // updateDB = () => {
+  //   const ref = firebase.database().ref('Attendance/');
+  //   ref.set({
+  //     type: 'Theory',
+  //     subject: 'DLDA'
+  //   })
+  // }
+
   getStudents = async () => {
     this.setState({ students: [] });
     const ref = firebase.firestore().collection('students').get();
@@ -73,6 +83,20 @@ export default class App extends Component {
           </View>
         </View>
         <View style={styles.img_container}>
+          <TextInput
+            style={{ height: 40, borderColor: 'white', borderWidth: 1, margin: 5 }}
+            placeholder='Theory/Practical'
+            autoCapitalize='words'
+            maxLength={9}
+            onChangeText={text => this.setState({ type: text })}
+          /> 
+          <TextInput
+            style={{ height: 40, borderColor: 'white', borderWidth: 1, margin: 5 }}
+            placeholder='Subject'
+            autoCapitalize='characters'
+            maxLength={4}
+            onChangeText={text => this.setState({ subject: text })}
+          /> 
           {photo && (
             <Image source={{ uri: photo.uri }} style={styles.userImg} />
           )}
@@ -82,6 +106,8 @@ export default class App extends Component {
               renderItem={({item}) => <Text style={{ fontSize: 18, padding: 5 }}>{item.id} : {item.name}</Text>}
             />
           )} 
+          <Text>Lecture type: {this.state.type} </Text>
+          <Text>Subject: {this.state.subject} </Text>
         </View>
      </View>
     );
@@ -97,7 +123,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
   },
 
   stretch: {
@@ -111,8 +136,8 @@ const styles = StyleSheet.create({
   },
 
   userImg: {
-    width: 250,
-    height: 180,
+    width: '80%',
+    height: '50%',
   },
 
   img_container: {
