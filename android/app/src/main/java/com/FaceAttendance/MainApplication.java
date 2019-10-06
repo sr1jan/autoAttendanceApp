@@ -13,7 +13,6 @@ import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage; 
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
-import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class MainApplication extends Application implements ReactApplication {
       packages.add(new RNFirebaseStoragePackage());
       packages.add(new RNFirebaseFirestorePackage());
       packages.add(new RNFirebaseAuthPackage());
-      packages.add(new RNFirebaseDatabasePackage());
       return packages;
     }
 
