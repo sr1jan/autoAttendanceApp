@@ -9,13 +9,13 @@ export default class Code extends Component {
 	};
 	state ={
 	  incode: '',
-	  scode: 'Connecting....',
+	  scode: 'college code will come here',
 	}
 	handleChange =key => val => {
 		this.setState({[key]: val})
 	}
 	_call2 = () => {
-	if(this.state.incode==this.state.scode)
+	if(this.state.scode==this.state.incode)
 		{
 	     Actions.tlogin()
 		}
@@ -25,12 +25,17 @@ export default class Code extends Component {
 		}
 	}
 	componentDidMount() {
-		let item=firebase.database().ref('Users/scode');
-		item.on('value', snapshot => {
-			let data = snapshot.val();
-			let scode=Object.values(data);
-			this.setState({ scode });
-		});
+		firebase
+		.firestore()
+		.collection("collegeCode")
+		.get()
+		.then(Snapshot => {
+    		Snapshot
+    		.docs
+    		.forEach(doc => {
+        	this.setState({scode: doc.data().code});
+			});
+    	});
 	}
 	 render() {
 	    return (
@@ -52,7 +57,7 @@ export default class Code extends Component {
 		            <TextInput style={styles.inputBox}
 			            placeholder="Enter Code"
 			            placeholderTextColor = "#ffffff"
-			            value={this.state.scode}
+			            value={this.state.incode}
 			            onChangeText={this.handleChange('incode')}        
 		            />
 		            <TouchableOpacity style={{marginVertical: 15, width: 150, backgroundColor: 'rgba(255, 255, 255, 0.1)', textAlign: 'center', borderRadius: 10,}} onPress={this._call2}>

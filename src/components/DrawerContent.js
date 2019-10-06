@@ -1,71 +1,51 @@
 import React, { Fragment, Component} from 'react';
 import {Actions} from 'react-native-router-flux';
-import { View, Text, StyleSheet ,Animated, Image,StatusBar,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet ,Animated, Image, StatusBar, TouchableOpacity } from 'react-native';
 import firebase from 'react-native-firebase';
-
-class ImageLoader extends Component {
-
-  state = {
-    opacity: new Animated.Value(0),
-  }
-
-  onLoad = () => {
-    Animated.timing(this.state.opacity, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  }
-
-  render() {
-    return(
-      <Animated.Image
-      onLoad={this.onLoad}
-      {...this.props}
-      style={[
-        {
-          opacity: this.state.opacity,
-          transform: [
-            {
-              scale: this.state.opacity.interpolate({
-                inputRange: [0, 1],
-                outputRange: [0.85, 1],
-              })
-            }
-          ]
-        },
-          this.props.style,
-        ]}
-        />
-      )
-  }
-}
+import ImagePicker from 'react-native-image-picker';
 
 export default class next extends Component {
-		   _call(){
-		  
-			Actions.pictures();
-			};
+	state = {
+    	photo: null,
+    };
+    handleChoosePhoto = () => {
+    const options = {
+      noData: true,
+    };
+    	ImagePicker.showImagePicker(options, response => {
+      	if (response.uri) {
+        this.setState({ photo: response });
 
-		   _call2(){
- 				firebase.auth().signOut();
-		   		Actions.code();
-			}
-			alert(){
-				alert('This feature coming on next update')
-			}
-			dhome(){
-				Actions.home()
-			}
+        const image = {
+          path : response.uri.toString(),
+        };
+      	}
+    	});
+  	}
+	_call(){
+		Actions.pictures();
+	};
+	_call2(){
+ 		firebase.auth().signOut();
+	}
+	alert(){
+		alert('This feature coming on next update')
+	}
+	dhome(){
+		Actions.home()
+	}
 	render(){
-
+		const { photo } = this.state;
 		return (
 			<Fragment>
 				<View style={ styles.container }>
 					<View style={styles.topDrawer}>
-						<ImageLoader
-					        style={{ width: 255 , height: 255 }}
-					        source={require('../Images/ritik.png')}/>
+						<TouchableOpacity style={{ backgroundColor: 'white', alignItems: 'center', width: 135 }} onPress={this.handleChoosePhoto}>
+              			<Text style={{ color: 'black', padding: 5 }}>Choose Photo</Text>
+            			</TouchableOpacity>
+					    {photo && (
+            				<Image source={{ uri: photo.uri }} style={styles.userImg} />
+          				)}
 					</View>
 						<View style={styles.bottomDrawer}>
 						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.dhome}>
