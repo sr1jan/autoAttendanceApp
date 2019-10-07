@@ -3,7 +3,7 @@ import { Text, View, StyleSheet,StatusBar,TextInput,TouchableOpacity} from 'reac
 
 export default class Logo extends Component<{}> {
 	   _call(){
-  alert('Server Not Found ERROR 404');
+  alert('Student SignUp will be soon launched');
 }
 
 	render() {

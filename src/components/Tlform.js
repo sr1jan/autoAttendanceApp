@@ -10,13 +10,16 @@ call2(){
 
 state = { email: '', password: '', errorMessage: null }
   handleLogin = () => {
-    const { email, password } = this.state
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => this.call2())
-      .catch(error => this.setState({ errorMessage: error.message }))
-  }
+    if (this.state.email=='' || this.state.password=='') {
+			alert(" Login or Password can not be empty")
+		} else {
+			firebase
+			.auth()
+			.signInWithEmailAndPassword(this.state.email, this.state.password)
+			.then(() => this.call2())
+			.catch(error => this.setState({ errorMessage: error.message }))
+		}
+	}
 	render() {
 		return(
 			<View style={styles.container}>

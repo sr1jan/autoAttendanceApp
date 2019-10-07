@@ -19,13 +19,9 @@ _call2(){
         
          <Logo type="Login"/>
          <Tlform/>
-         <TouchableOpacity>
-                <Button 
-                  onPress={this._call2}
-                  title="Forget password"
-                  color='rgba(255, 255, 255, 0.1)'
-                 />
-                  </TouchableOpacity>
+         <TouchableOpacity onPress={this._call}>
+            <Text style={styles.forgetPass}> Forget Password </Text>              
+          </TouchableOpacity>
          <View style={styles.signUP}>
           <Text style={styles.sign}>Don't have an Account.</Text>
           <TouchableOpacity onPress={this._call}><Text style={styles.sign}> Signup</Text></TouchableOpacity>
@@ -55,6 +51,10 @@ const styles = StyleSheet.create({
   sign: {
     color: 'rgba(255, 255, 255, 0.7)',
     fontSize: 18
+  },
+  forgetPass: {
+    color: 'white',
+    padding: 5
   },
 
   

@@ -6,7 +6,7 @@ import Logo from '../components/Logo';
 export default class Flog extends Component {
 
 _onPressButton() {
-    Actions.tsignup()
+    alert("Teachers are provided with Login ID please Login")
   }
   _callToStudent(){
     Actions.ssignup()
