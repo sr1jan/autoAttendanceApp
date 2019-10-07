@@ -5,25 +5,29 @@ import RNPickerSelect from 'react-native-picker-select';
 import firebase from 'react-native-firebase';
 
 export default class Attend extends Component {
-	state={
+    state={
     Department:'',
     class:'',
     subject:'',
-    Lecturetype: '',
-    students: '',
+    lectureType: '',
+    lecturesNum: 0,
    }
    AttendanceInstance = () => {
-        firebase.firestore().collection("AttendanceInstance").doc("CurrentAttendance").update({subject: this.state.subject, lectureType: this.state.Lecturetype});
+        firebase.firestore().collection("AttendanceInstance").doc("CurrentAttendance").update({
+            subject: this.state.subject, 
+            lectureType: this.state.lectureType,
+            lecturesNum: this.state.lecturesNum,
+        });
         Actions.imgup();
     };
-	
-	 render() {
-	    return (
-		    <View style={styles.container}>
-		      	<StatusBar backgroundColor="#000000" barStyle="light-content"
-		      	/>
-		      	<Text style={styles.dept}>Select Department</Text>
-                <RNPickerSelect
+    
+     render() {
+        return (
+            <View style={styles.container}>
+                <StatusBar backgroundColor="#000000" barStyle="light-content"
+                />
+                <Text style={styles.dept}>Select Department</Text>
+                <RNPickerSelect style={{marginVertical: 180, alignItems: 'center'}}
                         onValueChange={(value) => this.setState({Department: value})}
                         items={[
                             { label: 'Computer Department', value: 'Computer' },
@@ -57,37 +61,38 @@ export default class Attend extends Component {
                 />
                 <Text style={styles.dept}>Lecture Type</Text>
                 <RNPickerSelect style={{marginVertical: 180}}
-                    onValueChange={(value) => this.setState({Lecturetype: value})}
+                    onValueChange={(value) => this.setState({lectureType: value})}
                     items={[
                         { label: 'Practical', value: 'Practical' },
                         { label: 'Theory', value: 'Theory' },   
                     ]}
                 />
-                <Text style={styles.dept}>Select students</Text>
+                <Text style={styles.dept}>Number of lectures</Text>
                 <RNPickerSelect style={{marginVertical: 180}}
-                    onValueChange={(value) => this.setState({students: value})}
+                    onValueChange={(value) => this.setState({lecturesNum: parseInt(value, 10)})}
                     items={[
-                        { label: 'S1 Batch', value: 'S1 Batch' },
-                        { label: 'S2 Batch', value: 'S2 Batch' },
-                        { label: 'S3 Batch', value: 'S3 Batch' },
-                        { label: 'Full Class', value: 'Full Class' },    
+                        { label: '1', value: '1' },
+                        { label: '2', value: '2' },
+                        { label: '3', value: '3' },
+                        { label: '4', value: '4' },    
                     ]}
                 />
-            		           
-            	<Button 
-            		onPress={this.AttendanceInstance}
-            		title="Take Attendance"
-            		color='#000000'
-            		/>    
-		    </View>
-	     );
-	 }
+                <TouchableOpacity 
+                    style={{ backgroundColor: 'black', alignItems: 'center' }} 
+                    onPress={this.AttendanceInstance}              
+                >
+                    <Text style={{ color: 'white', textAlign: 'center', padding: 5 }}> Take Attendance </Text>
+                </TouchableOpacity>
+            </View>
+         );
+     }
 }
 const styles = StyleSheet.create({
   container: {
-   flexGrow: 1,
-   backgroundColor: '#ffffff',
-   justifyContent:'center'
+   flex: 1,
+   backgroundColor: '#3d5afe',
+   justifyContent:'center',
+   alignItems: 'center'
    
   },
 

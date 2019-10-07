@@ -2,38 +2,49 @@ import React, {Component }from 'react'
 import {Actions} from 'react-native-router-flux';
 import { View, Text, ActivityIndicator, StyleSheet, StatusBar,Animated, Image,ImageBackground} from 'react-native'
 import firebase from 'react-native-firebase';
+import Onboarding from 'react-native-onboarding-swiper';
 
 export default class Loading extends React.Component {
-  componentDidMount() {
-    var executed=false;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if(user){
-        if(!executed){
-          executed=true;
-          Actions.drawer();
-        } 
-      } 
-      if(!user) { 
-        Actions.code() 
-      }
-    });
-  }
-  
-
+	schoolCode(){
+		Actions.code();
+	}
   render( ) {
+  return (
+    <Onboarding 
+    onSkip={() => {
+      this.schoolCode()
+    }}
+    onDone={() => {
+          this.schoolCode()
+        }}
+    pages={[
+      {
+        backgroundColor: '#fff',
+        image: <Image 
+                style={{resizeMode: 'center'}}
+                source={require('../Images/Logo.png')} />,
+        title: 'Attendance System',
+        subtitle: 'Easy Face Attendance System Using AI',
+      },
+      {
+        backgroundColor: '#fe6e58',
+        image: <Image 
+                style={{resizeMode: 'center'}}
+                source={require('../Images/Logo.png')} />,
+        title: 'Just click photo',
+        subtitle: 'Select the lecture and click a picture of class',
+      },
+      {
+        backgroundColor: '#999',
+        image: <Image 
+                style={{resizeMode: 'center'}}
+                source={require('../Images/Logo.png')} />,
+        title: "Thast's it. Attendance Updated",
+        subtitle: "Vola Enjoy",
 
-    return (
-      <ImageBackground source={require('../Images/backg.png')} style={{width: '100%', height: '100%'}}>
-      <View style={styles.container}>
-      <StatusBar backgroundColor="#000000" barStyle="light-content" />
-      <Image
-                style={{ flex:1, resizeMode: 'center'}}
-                source={require('../Images/Logo.png')}/> 
-       <Text style={{fontSize: 30, color : 'rgba(255, 255, 255, 0.7)'}}>Loading</Text>
-       <ActivityIndicator size="large" /> 
-      </View>
-      </ImageBackground>
-
+      },
+    ]}
+  />
   );  
   }
 }

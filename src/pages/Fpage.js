@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, StatusBar, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import firebase from 'react-native-firebase';
 
 class ImageLoader extends Component {
   state = {
@@ -45,9 +46,20 @@ export default class Loading extends Component {
 
     setTimeout(function(){
 
-     Actions.loading()
+    var executed=false;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if(user){
+        if(!executed){
+          executed=true;
+          Actions.drawer();
+        } 
+      } 
+      if(!user) { 
+        Actions.loading() 
+      }
+    });
 
-    }, 2000);
+  }, 2000);
 
 
   }
