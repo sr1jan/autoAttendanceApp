@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,TextInput,TouchableOpacity} from 'react-native';
 
-export default class Logo extends Component<{}> {
-		   _call(){
-  alert('No Record Found');
-}
+export default class Logo extends Component {
+	_call(){
+		alert('No Record Found');
+	}
 
 	render() {
 		return(

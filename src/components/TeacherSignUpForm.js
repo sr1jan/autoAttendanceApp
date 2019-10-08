@@ -3,19 +3,19 @@ import { Text, View, StyleSheet,StatusBar,TextInput,TouchableOpacity} from 'reac
 import firebase from 'react-native-firebase'
 
 export default class Tform extends Component<{}> {
-call2(){
-	Actions.drawer()
-}
-state = { email: '', password: '', errorMessage: null }
-handleSignUp = () => {
-  firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => this.call2())
-      .catch(error => this.setState({ errorMessage: error.message }))
-  
-}
+	state = { email: '', password: '', errorMessage: null }
 
+	call2(){
+		Actions.drawer()
+	}
+
+	handleSignUp = () => {
+		firebase
+		.auth()
+		.createUserWithEmailAndPassword(this.state.email, this.state.password)
+		.then(() => this.call2())
+		.catch(error => this.setState({ errorMessage: error.message }))
+	}
 
 	render() {
 		return(
@@ -52,7 +52,7 @@ handleSignUp = () => {
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#18163E',
    alignItems :'center',
    justifyContent : 'center',
    

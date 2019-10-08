@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,StatusBar,TouchableOpacity,Button } from 'react-native';
+import { Text, View, Alert, StyleSheet, StatusBar, TouchableOpacity, Button } from 'react-native';
 import Logo from '../components/Logo';
 import LoginForm from '../components/LoginForm';
 import {Actions} from 'react-native-router-flux';
 
  
-export default class Loginn extends Component<{}> {
+export default class Loginn extends Component {
   
 _call(){
   Actions.teacherORstudent()
 }
 _call2(){
-  alert('You can Signup again and all your data will be copied from old profile automatically');
+  Alert.alert('Contact admins', 'They will surely help you :)');
 }
   render() {
     return(
@@ -33,7 +33,7 @@ _call2(){
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#4885ed',
+   backgroundColor: '#18163E',
    alignItems :'center',
    justifyContent : 'center',
    

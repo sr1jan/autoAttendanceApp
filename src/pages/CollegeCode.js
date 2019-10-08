@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,StatusBar,TextInput, Image, TouchableOpacity, Button,AsyncStorage,ImageBackground} from 'react-native';
+import { Text, View, Alert, StyleSheet,StatusBar, TextInput, Image, TouchableOpacity } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import firebase from 'react-native-firebase';
+
 export default class Code extends Component {
-	_call(){
-		
-	   alert('Contact your collage to get the code');
-	};
-	state ={
+
+	state = {
 	  incode: '',
 	  scode: 'college code will come here',
 	}
+
+	_call(){
+	   Alert.alert('Contact admins','Contact your college to get the code');
+	};
+	
 	handleChange =key => val => {
 		this.setState({[key]: val})
 	}
+
 	_call2 = () => {
-	if(this.state.scode==this.state.incode)
-		{
-	     Actions.login()
-		}
-		else
-		{
-			alert('wronge college code');
+		if(this.state.scode==this.state.incode){
+			Actions.login()
+		}else{
+			Alert.alert('Uh-oh!','Wrong college code');
 		}
 	}
+
 	componentDidMount() {
 		firebase
 		.firestore()
@@ -47,7 +49,7 @@ export default class Code extends Component {
 		      	<StatusBar backgroundColor="#000000" barStyle="light-content"
 		      	/>
 		      		<Image
-		                style={{resizeMode: 'center'}}
+		                style={{ resizeMode: 'center', tintColor: 'white' }}
 		                source={require('../Images/Logo.png')}
 		            /> 
 		            <Text style={styles.logoText}>
@@ -59,10 +61,10 @@ export default class Code extends Component {
 			            value={this.state.incode}
 			            onChangeText={this.handleChange('incode')}        
 		            />
-		            <TouchableOpacity style={{marginVertical: 15, width: 150, backgroundColor: 'rgba(255, 255, 255, 0.1)', textAlign: 'center', borderRadius: 10,}} onPress={this._call2}>
-              			<Text style={styles.logotext}>Take me inn</Text>
+		            <TouchableOpacity style={{marginVertical: 15, width: 130, backgroundColor: 'rgba(255, 255, 255, 0.1)', textAlign: 'center', borderRadius: 10,}} onPress={this._call2}>
+              			<Text style={styles.logotext}>Submit</Text>
             		</TouchableOpacity>
-		            <TouchableOpacity onPress={this._call}><Text style={styles.text}>Don't have code</Text></TouchableOpacity>
+		            <TouchableOpacity onPress={this._call}><Text style={styles.text}>Don't have code?</Text></TouchableOpacity>
 		    </View>
 	     );
 	 }
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
    flexGrow: 1,
    alignItems :'center',
    justifyContent : 'center',
-   backgroundColor: '#4885ed'
+   backgroundColor: '#18163E'
   },
    logotext : {
       marginVertical: 7,

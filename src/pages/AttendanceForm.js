@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,StatusBar,TextInput, Image, TouchableOpacity, Button,AsyncStorage,ProgressBarAndroid} from 'react-native';
+import { Text, View, StyleSheet,StatusBar, Alert, TouchableOpacity, ProgressBarAndroid } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import RNPickerSelect from 'react-native-picker-select';
 import ImagePicker from 'react-native-image-picker';
@@ -53,13 +53,16 @@ export default class Attend extends Component {
     progressBarStatus: false,
   }
   AttendanceInstance = () => {
-        firebase.firestore().collection("AttendanceInstance").doc("CurrentAttendance").update({
-            subject: this.state.subject, 
-            lectureType: this.state.lectureType,
-            lecturesNum: this.state.lecturesNum,
-        });
-        this.handleChoosePhoto()
+    if(!this.state.subject || !this.state.lectureType || !this.state.lecturesNum){
+      return Alert.alert('Incomplete form','Please fill in the above information before proceeding')
+    }
+    firebase.firestore().collection("AttendanceInstance").doc("CurrentAttendance").update({
+        subject: this.state.subject, 
+        lectureType: this.state.lectureType,
+        lecturesNum: this.state.lecturesNum,
+    }).then(this.handleChoosePhoto());
   };
+
   test(){
     Actions.attendanceUpdatedPage();
   }
@@ -152,7 +155,7 @@ export default class Attend extends Component {
                     style={{ backgroundColor: '#fff', alignItems: 'center', marginVertical: 30}} 
                     onPress={this.AttendanceInstance}              
                 >
-                    <Text style={{ color: '#000', textAlign: 'center', padding: 8, }}> {this.state.status} </Text>
+                    <Text style={{ color: '#000', textAlign: 'center', padding: 8, }}> Take Photo </Text>
                 </TouchableOpacity>
                 {progressBarStatus && (
                   <ProgressBarAndroid styleAttr="Horizontal" color="#fff" />
@@ -164,7 +167,7 @@ export default class Attend extends Component {
 const styles = StyleSheet.create({
   container: {
    flex: 1,
-   backgroundColor: '#4885ed',
+   backgroundColor: '#18163E',
    justifyContent:'center',
    alignItems: 'center'
    

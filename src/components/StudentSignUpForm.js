@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,StatusBar,TextInput,TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet,  StatusBar,TextInput,TouchableOpacity} from 'react-native';
 
 export default class Logo extends Component<{}> {
 	   _call(){
@@ -46,7 +46,7 @@ export default class Logo extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#4885ed',
+   backgroundColor: '#18163E',
    alignItems :'center',
    justifyContent : 'center',
    

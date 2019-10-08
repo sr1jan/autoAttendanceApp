@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,Image,ImageBackground} from 'react-native';
 
-export default class Logo extends Component<{}> {
+export default class Logo extends Component {
 	render() {
 		return(
 			<View style={styles.container}>
 				 <Image
-            style={{resizeMode: 'center'}}
+            style={{resizeMode: 'center', tintColor: 'white'}}
           	source={require('../Images/Logo.png')}/>  
         		<Text style={styles.logoText}>
           		{this.props.type}
@@ -18,7 +18,7 @@ export default class Logo extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#4885ed',
+   backgroundColor: '#18163E',
    alignItems :'center',
    justifyContent : 'center',
    

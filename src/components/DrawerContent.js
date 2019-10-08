@@ -9,24 +9,24 @@ export default class next extends Component {
     	photo: null,
     };
     handleChoosePhoto = () => {
-    const options = {
-      noData: true,
-    };
+		const options = {
+			noData: true,
+		};
     	ImagePicker.showImagePicker(options, response => {
-      	if (response.uri) {
-        this.setState({ photo: response });
+			if (response.uri) {
+				this.setState({ photo: response });
 
-        const image = {
-          path : response.uri.toString(),
-        };
-      	}
+				const image = {
+					path : response.uri.toString(),
+				};
+			}
     	});
   	}
 	_call(){
 		Actions.pictures();
 	};
 	_call2(){
- 		firebase.auth().signOut();
+		 firebase.auth().signOut();
 	}
 	alert(){
 		alert('This feature coming on next update')
@@ -77,25 +77,23 @@ export default class next extends Component {
 }
 const styles = StyleSheet.create({
 	container: {
-	flexGrow: 1,
-	backgroundColor: '#3d5afe',
+		flexGrow: 1,
+		backgroundColor: '#18163E',
 	},
 	topDrawer: {
-	flex: 1,
-	justifyContent: 'center',
-	alignContent: 'center',
-	alignItems: 'center'
+		flex: 1,
+		justifyContent: 'center',
+		alignContent: 'center',
+		alignItems: 'center'
 	},
 	bottomDrawer: {
-	flex: 2,
-	backgroundColor: '#4885ed',
+		flex: 2,
+		backgroundColor: '#18163E',
 	},
-
   	logoText : {
-      marginVertical: 10,
-      fontSize: 18,
-      color: '#000',
-      textAlign: 'center',
+		marginVertical: 10,
+		fontSize: 18,
+		color: '#000',
+		textAlign: 'center',
     },
-
 });

@@ -13,19 +13,19 @@ import AttendanceForm from './pages/AttendanceForm';
 import AttendanceUpdatedPage from './components/AttendanceUpdatedPage';
 
 
-export default class Routes extends Component<{}> {
+export default class Routes extends Component {
 	render() {
 		return( 
-			<Router navigationBarStyle={{ backgroundColor: '#4885ed' }}>
+			<Router navigationBarStyle={{ backgroundColor: '#18163E' }}>
 		    <Stack key="root">
-		      <Scene key="welcome" component={Welcome} hideNavBar={true} />
-		      <Scene key="collegeCode" component={CollegeCode} hideNavBar={true}/>
-		      <Scene key="informationMenu" component={InformationMenu} hideNavBar={true} />
-		      <Scene key="login" component={Login} title="Login"/>
-		      <Scene key="teacherORstudent" component={TeacherORstudent} hideNavBar={true}/>
-		      <Scene key="StudentSignUp" component={StudentSignUp} title="Student SignUp"/>
-		      <Scene key="TeacherSignUp" component={TeacherSignUp} title="Teacher SignUp"/>
-		     <Scene key="drawer"
+				<Scene key="welcome" component={Welcome} hideNavBar={true} />
+				<Scene key="collegeCode" component={CollegeCode} hideNavBar={true}/>
+				<Scene key="informationMenu" component={InformationMenu} hideNavBar={true} />
+				<Scene key="login" component={Login} hideNavBar={true}/>
+				<Scene key="teacherORstudent" component={TeacherORstudent} hideNavBar={true}/>
+				<Scene key="StudentSignUp" component={StudentSignUp} title="Student SignUp" hideNavBar={true}/>
+				<Scene key="TeacherSignUp" component={TeacherSignUp} title="Teacher SignUp" hideNavBar={true}/>
+				<Scene key="drawer"
 					drawer
 					contentComponent={DrawerContent}
 					drawerWidth = {250}
@@ -33,13 +33,11 @@ export default class Routes extends Component<{}> {
 					hideNavBar={true}
 				>
 				<Scene key="home" component={Home} hideNavBar={true} />
-				    <Scene key="attendanceForm" component={AttendanceForm} title="Attendance" />
+				    <Scene key="attendanceForm" component={AttendanceForm} hideNavBar={true}/>
 				       	<Scene key="attendanceUpdatedPage" component={AttendanceUpdatedPage} hideNavBar={true}/>
 				</Scene>
-		     
 		    </Stack>
 		  </Router>
-			)	
-		
+		)	
 	} 
 }

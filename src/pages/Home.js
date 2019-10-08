@@ -53,56 +53,55 @@ export default class Home extends Component {
   }
 	render(){
 		return (
-    		<SafeAreaView style={{flex: 1, backgroundColor: '#4885ed'}}>
-      		<ScrollView >
-          <View style={{flexDirection: 'row', backgroundColor: '#fff'}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: '#18163E'}}>
+        <ScrollView >
+          <View style={{flexDirection: 'row', backgroundColor: '#18163E'}}>
            <TouchableOpacity onPress={this.openDrawer}>
             <LottieView 
-              style={{width: 100,}}
-              source={require('../components/drawerButton.json')}  />
+              autoSize={true}
+              style={{ width: 90 }}
+              source={require('../components/drawerButton.json')} 
+            />
           </TouchableOpacity>
-          <Text style={{color:'#000000',fontSize: 30, marginVertical: 15}}>
-            Teacher DashBoard
-          </Text> 
         </View> 
-					<View style={styles.container}>
-  					<View style={{flexDirection: 'row'}}>
-  						<TouchableOpacity onPress={this.markAttendance}> 
-  							<ImageLoader
-                  style={{width: 150, height: 120, borderRadius: 10,}}
-                  source={require('../Images/tile1.png')}/>
-							</TouchableOpacity> 
-  						<TouchableOpacity onPress={this.alert}> 
-         				<ImageLoader
-					       style={{marginHorizontal: 20, width: 120, height: 120, borderRadius: 10,}}
-					       source={require('../Images/tile2.png')}/>
-  						</TouchableOpacity> 
- 						</View>
-						<TouchableOpacity onPress={this.alert}> 
-							<ImageLoader
-								style={{marginVertical: 20, width: 280, height: 100, borderRadius: 10,}}
-								source={require('../Images/tile3.png')}/>
-						</TouchableOpacity> 
-  					<View style={{flexDirection: 'row'}}>
-					   <TouchableOpacity onPress={this.alert}> 
-						      <ImageLoader
-						        style={{marginVertical: 1,  width: 130, height: 150, borderRadius: 10,}}
-						        source={require('../Images/tile4.png')}/>
-					   </TouchableOpacity> 
-					   <TouchableOpacity onPress={this.alert}> 
-					     <ImageLoader
-					       style={{marginVertical: 10, marginHorizontal: 20, width: 120, height: 120, borderRadius: 10,}}
-					       source={require('../Images/title5.png')}/>
-					   </TouchableOpacity> 
- 						</View> 
-  					<TouchableOpacity onPress={this.alert}> 
-    					<ImageLoader
-					     style={{marginVertical: 20,  width: 280, height: 80, borderRadius: 10,}}
-					     source={require('../Images/tile6.png')}/>
+        <View style={styles.container}>
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={this.markAttendance}> 
+              <ImageLoader
+                style={{width: 150, height: 120, borderRadius: 10,}}
+                source={require('../Images/tile1.png')}/>
             </TouchableOpacity> 
- 						</View>
-     			</ScrollView>
-    		</SafeAreaView>
+            <TouchableOpacity onPress={this.alert}> 
+              <ImageLoader
+                style={{marginHorizontal: 20, width: 120, height: 120, borderRadius: 10,}}
+                source={require('../Images/tile2.png')}/>
+            </TouchableOpacity> 
+          </View>
+          <TouchableOpacity onPress={this.alert}> 
+            <ImageLoader
+              style={{marginVertical: 20, width: 290, height: 100, borderRadius: 10,}}
+              source={require('../Images/tile3.png')}/>
+          </TouchableOpacity> 
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity onPress={this.alert}> 
+              <ImageLoader
+                style={{marginVertical: 1,  width: 130, height: 150, borderRadius: 10,}}
+                source={require('../Images/tile4.png')}/>
+            </TouchableOpacity> 
+            <TouchableOpacity onPress={this.alert}> 
+              <ImageLoader
+                style={{marginVertical: 1, marginHorizontal: 20, width: 130, height: 150, borderRadius: 10,}}
+                source={require('../Images/title5.png')}/>
+					   </TouchableOpacity> 
+          </View> 
+          <TouchableOpacity onPress={this.alert}> 
+            <ImageLoader
+              style={{marginVertical: 20,  width: 280, height: 80, borderRadius: 10,}}
+              source={require('../Images/tile6.png')}/>
+          </TouchableOpacity> 
+        </View>
+        </ScrollView>
+      </SafeAreaView>
 		);
 	}
 }
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
   container: {
    alignItems :'center',
    justifyContent: 'center',
-   marginVertical: 50
+   marginVertical: 10,
   },
 
   logoText : {
