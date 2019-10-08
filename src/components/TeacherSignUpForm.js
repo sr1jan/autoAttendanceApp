@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,TextInput,TouchableOpacity} from 'react-native';
 import firebase from 'react-native-firebase'
+import { Actions } from 'react-native-router-flux';
 
-export default class Tform extends Component<{}> {
+export default class Tform extends Component {
 	state = { email: '', password: '', errorMessage: null }
 
 	call2(){

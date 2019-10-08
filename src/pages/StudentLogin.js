@@ -5,7 +5,7 @@ import StudentLoginForm from '../components/StudentLoginForm';
 import {Actions} from 'react-native-router-flux';
 
  
-export default class Loginn extends Component<{}> {
+export default class Loginn extends Component {
 _call(){
   Actions.ssignup()
 }
