@@ -10,6 +10,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
     "firebase": "^6.6.2",
+    "lottie-react-native": "^3.2.1",
     "react": "16.9.0",
     "react-native": "0.61.2",
     "react-native-firebase": "^5.5.6",

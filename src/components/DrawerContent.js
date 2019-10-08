@@ -48,25 +48,25 @@ export default class next extends Component {
           				)}
 					</View>
 						<View style={styles.bottomDrawer}>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.dhome}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.dhome}>
 							<Text style={styles.logoText}>Home</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this._call}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this._call}>
 							<Text style={styles.logoText}>Mark Attendance</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Time Table</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Broadcast</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Create event</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Mark free lecture</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this._call2}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>
 				  		</TouchableOpacity>
 					</View>
@@ -78,10 +78,7 @@ export default class next extends Component {
 const styles = StyleSheet.create({
 	container: {
 	flexGrow: 1,
-
-	},
-	drawerText: {
-	color: '#fff'
+	backgroundColor: '#3d5afe',
 	},
 	topDrawer: {
 	flex: 1,
@@ -91,13 +88,13 @@ const styles = StyleSheet.create({
 	},
 	bottomDrawer: {
 	flex: 2,
-	backgroundColor: '#212121',
+	backgroundColor: '#4885ed',
 	},
 
   	logoText : {
       marginVertical: 10,
       fontSize: 18,
-      color: '#ffffff',
+      color: '#000',
       textAlign: 'center',
     },
 

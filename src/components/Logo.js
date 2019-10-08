@@ -6,20 +6,19 @@ export default class Logo extends Component<{}> {
 		return(
 			<View style={styles.container}>
 				 <Image
-          			style={{resizeMode: 'center'}}
-          			source={require('../Images/Logo.png')}/>  
-        			<Text style={styles.logoText}>
-          			{this.props.type}
-          			</Text>
-        	</View>
-
-			)
+            style={{resizeMode: 'center'}}
+          	source={require('../Images/Logo.png')}/>  
+        		<Text style={styles.logoText}>
+          		{this.props.type}
+          	</Text>
+      </View>
+		)
 	}
 }
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#4885ed',
    alignItems :'center',
    justifyContent : 'center',
    

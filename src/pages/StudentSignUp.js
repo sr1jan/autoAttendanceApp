@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,TouchableOpacity } from 'react-native';
 import Logo from '../components/Logo';
-import Ssform from '../components/Ssform';
+import StudentSignUpForm from '../components/StudentSignUpForm';
 import {Actions} from 'react-native-router-flux';
 
 export default class Signup extends Component<{}> {
@@ -13,7 +13,7 @@ export default class Signup extends Component<{}> {
       <View style={styles.container}>
         
          <Logo type="Signup As Student"/>
-         <Ssform/>
+         <StudentSignUpForm/>
         
       </View>
       );
@@ -23,7 +23,7 @@ export default class Signup extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#4885ed',
    alignItems :'center',
    justifyContent : 'center',
    

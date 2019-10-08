@@ -55,7 +55,7 @@ export default class Loading extends Component {
         } 
       } 
       if(!user) { 
-        Actions.loading() 
+        Actions.informationMenu() 
       }
     });
 
@@ -90,7 +90,7 @@ export default class Loading extends Component {
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#4885ed',
    alignItems :'center',
    
   },

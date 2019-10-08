@@ -55,7 +55,7 @@ state = { email: '', password: '', errorMessage: null }
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#4885ed',
    alignItems :'center',
    justifyContent : 'center',
    

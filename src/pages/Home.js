@@ -3,6 +3,7 @@ import {Actions} from 'react-native-router-flux';
 import { SafeAreaView, StyleSheet,Animated, ScrollView, Image,View, Text, StatusBar,TouchableOpacity,ImageBackground} from 'react-native';
 import {Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
 import firebase from 'react-native-firebase';
+import LottieView from 'lottie-react-native';
 class ImageLoader extends Component {
 
   state = {
@@ -41,93 +42,81 @@ class ImageLoader extends Component {
   }
 }
 export default class Home extends Component {
-
-    _call2(){
-    	  firebase.auth().signOut();
-          Actions.code()
-	}
-	mark(){
-		Actions.pictures()
+	markAttendance(){
+		Actions.attendanceForm()
 	}
 	alert(){
 		alert('This feature coming on next update')
 	}
-
-
+  openDrawer(){
+    Actions.drawerOpen();
+  }
 	render(){
 		return (
-			 <ImageBackground source={require('../Images/backg.png')} style={{width: '100%', height: '100%'}}>
-    		<SafeAreaView style={styles.container}>
-      			<ScrollView >
+    		<SafeAreaView style={{flex: 1, backgroundColor: '#4885ed'}}>
+      		<ScrollView >
+          <View style={{flexDirection: 'row', backgroundColor: '#fff'}}>
+           <TouchableOpacity onPress={this.openDrawer}>
+            <LottieView 
+              style={{width: 100,}}
+              source={require('../components/drawerButton.json')}  />
+          </TouchableOpacity>
+          <Text style={{color:'#000000',fontSize: 30, marginVertical: 15}}>
+            Teacher DashBoard
+          </Text> 
+        </View> 
 					<View style={styles.container}>
-  						<Text style={styles.logoText}>
-                		Teacher DashBoard
-                		</Text>  
-  							<View style={styles.tile}>
-  								<TouchableOpacity onPress={this.mark}> 
-  									<ImageLoader
-                					style={{width: 150, height: 120, borderRadius: 15,}}
-                					source={require('../Images/tile1.png')}/>
-								</TouchableOpacity> 
-  								<TouchableOpacity onPress={this.alert}> 
-         							<ImageLoader
-					                style={{marginHorizontal: 20, width: 120, height: 120, borderRadius: 15,}}
-					                source={require('../Images/tile2.png')}/>
-  								</TouchableOpacity> 
- 							 </View>
-								<TouchableOpacity onPress={this.alert}> 
-								  	<ImageLoader
-								    style={{marginVertical: 20, width: 280, height: 100, borderRadius: 15,}}
-								    source={require('../Images/tile3.png')}/>
-								</TouchableOpacity> 
-  							<View style={styles.tile}>
-					            <TouchableOpacity onPress={this.alert}> 
-						            <ImageLoader
-						            style={{marginVertical: 1,  width: 130, height: 150, borderRadius: 15,}}
-						            source={require('../Images/tile4.png')}/>
-					            </TouchableOpacity> 
-					            <TouchableOpacity onPress={this.alert}> 
-					            	<ImageLoader
-					                style={{marginVertical: 1, marginHorizontal: 20, width: 120, height: 120, borderRadius: 15,}}
-					                source={require('../Images/title5.png')}/>
-					            </TouchableOpacity> 
- 							</View> 
-  								<TouchableOpacity onPress={this.alert}> 
-    								<ImageLoader
-					                style={{marginVertical: 20,  width: 280, height: 80, borderRadius: 15,}}
-					                source={require('../Images/tile6.png')}/>
-            					</TouchableOpacity> 
- 							</View>
+  					<View style={{flexDirection: 'row'}}>
+  						<TouchableOpacity onPress={this.markAttendance}> 
+  							<ImageLoader
+                  style={{width: 150, height: 120, borderRadius: 10,}}
+                  source={require('../Images/tile1.png')}/>
+							</TouchableOpacity> 
+  						<TouchableOpacity onPress={this.alert}> 
+         				<ImageLoader
+					       style={{marginHorizontal: 20, width: 120, height: 120, borderRadius: 10,}}
+					       source={require('../Images/tile2.png')}/>
+  						</TouchableOpacity> 
+ 						</View>
+						<TouchableOpacity onPress={this.alert}> 
+							<ImageLoader
+								style={{marginVertical: 20, width: 280, height: 100, borderRadius: 10,}}
+								source={require('../Images/tile3.png')}/>
+						</TouchableOpacity> 
+  					<View style={{flexDirection: 'row'}}>
+					   <TouchableOpacity onPress={this.alert}> 
+						      <ImageLoader
+						        style={{marginVertical: 1,  width: 130, height: 150, borderRadius: 10,}}
+						        source={require('../Images/tile4.png')}/>
+					   </TouchableOpacity> 
+					   <TouchableOpacity onPress={this.alert}> 
+					     <ImageLoader
+					       style={{marginVertical: 10, marginHorizontal: 20, width: 120, height: 120, borderRadius: 10,}}
+					       source={require('../Images/title5.png')}/>
+					   </TouchableOpacity> 
+ 						</View> 
+  					<TouchableOpacity onPress={this.alert}> 
+    					<ImageLoader
+					     style={{marginVertical: 20,  width: 280, height: 80, borderRadius: 10,}}
+					     source={require('../Images/tile6.png')}/>
+            </TouchableOpacity> 
+ 						</View>
      			</ScrollView>
     		</SafeAreaView>
-    		</ImageBackground>
-
 		);
 	}
 }
 const styles = StyleSheet.create({
   container: {
-   flex: 1,
-   
    alignItems :'center',
    justifyContent: 'center',
-  
-   
+   marginVertical: 50
   },
 
-   logoText : {
-      marginVertical: 50,
-      fontSize: 30,
-      color : '#ffffff'
-    },
-
-    tile: {
-
-      flexDirection: 'row',
-      alignItems :'center',
-   justifyContent: 'center',
-    },
-
-
- });
+  logoText : {
+    marginVertical: 50,
+    fontSize: 30,
+    color : '#000'
+  },
+});
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,TouchableOpacity } from 'react-native';
 import Logo from '../components/Logo';
-import Tform from '../components/Tform'; 
+import TeacherSignUpForm from '../components/TeacherSignUpForm'; 
 import {Actions} from 'react-native-router-flux';
 
 export default class Signup extends Component<{}> {
@@ -13,7 +13,7 @@ export default class Signup extends Component<{}> {
       <View style={styles.container}>
         
          <Logo type="Signup As Teacher"/>
-         <Tform/>
+         <TeacherSignUpForm/>
          <View style={styles.signup}>
           <Text style={styles.sign}>Already have an account ?</Text>
           <TouchableOpacity onPress={this._call}><Text style={styles.sign}> Login</Text></TouchableOpacity>
@@ -27,7 +27,7 @@ export default class Signup extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#4885ed',
    alignItems :'center',
    justifyContent : 'center',
    

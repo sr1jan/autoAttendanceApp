@@ -5,21 +5,21 @@ import firebase from 'react-native-firebase';
 import Onboarding from 'react-native-onboarding-swiper';
 
 export default class Loading extends React.Component {
-	schoolCode(){
-		Actions.code();
+	CollegeCode(){
+		Actions.collegeCode();
 	}
   render( ) {
   return (
     <Onboarding 
     onSkip={() => {
-      this.schoolCode()
+      this.CollegeCode()
     }}
     onDone={() => {
-          this.schoolCode()
+          this.CollegeCode()
         }}
     pages={[
       {
-        backgroundColor: '#fff',
+        backgroundColor: '#4885ed',
         image: <Image 
                 style={{resizeMode: 'center'}}
                 source={require('../Images/Logo.png')} />,
@@ -27,7 +27,7 @@ export default class Loading extends React.Component {
         subtitle: 'Easy Face Attendance System Using AI',
       },
       {
-        backgroundColor: '#fe6e58',
+        backgroundColor: '#4885ed',
         image: <Image 
                 style={{resizeMode: 'center'}}
                 source={require('../Images/Logo.png')} />,
@@ -35,11 +35,11 @@ export default class Loading extends React.Component {
         subtitle: 'Select the lecture and click a picture of class',
       },
       {
-        backgroundColor: '#999',
+        backgroundColor: '#4885ed',
         image: <Image 
                 style={{resizeMode: 'center'}}
                 source={require('../Images/Logo.png')} />,
-        title: "Thast's it. Attendance Updated",
+        title: "That's it. Attendance Updated",
         subtitle: "Vola Enjoy",
 
       },

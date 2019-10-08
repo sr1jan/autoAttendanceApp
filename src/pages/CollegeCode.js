@@ -17,7 +17,7 @@ export default class Code extends Component {
 	_call2 = () => {
 	if(this.state.scode==this.state.incode)
 		{
-	     Actions.tlogin()
+	     Actions.login()
 		}
 		else
 		{
@@ -39,7 +39,6 @@ export default class Code extends Component {
 	}
 	 render() {
 	    return (
-	    	<ImageBackground source={require('../Images/backg.png')} style={{width: '100%', height: '100%'}}>
 		    <View style={styles.container}>
 		      	{this.state.errorMessage &&
 		        <Text style={{ color: 'red' }}>
@@ -52,7 +51,7 @@ export default class Code extends Component {
 		                source={require('../Images/Logo.png')}
 		            /> 
 		            <Text style={styles.logoText}>
-		                Enter Collage Code
+		                Enter College Code
 		            </Text>
 		            <TextInput style={styles.inputBox}
 			            placeholder="Enter Code"
@@ -65,7 +64,6 @@ export default class Code extends Component {
             		</TouchableOpacity>
 		            <TouchableOpacity onPress={this._call}><Text style={styles.text}>Don't have code</Text></TouchableOpacity>
 		    </View>
-		    	</ImageBackground>
 	     );
 	 }
 }
@@ -74,7 +72,7 @@ const styles = StyleSheet.create({
    flexGrow: 1,
    alignItems :'center',
    justifyContent : 'center',
-   
+   backgroundColor: '#4885ed'
   },
    logotext : {
       marginVertical: 7,
