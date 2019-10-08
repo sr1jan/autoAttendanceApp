@@ -1,7 +1,7 @@
 # autoAttendanceApp
 
 <p align='center'>
-<img src='android/app/src/main/res/web_hi_res_512.png' align='center' height='300'>
+<img src='android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png' align='center'>
 </p>
 
 <p align='center'>
