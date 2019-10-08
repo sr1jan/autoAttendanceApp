@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,TouchableOpacity } from 'react-native';
 import Logo from '../components/Logo';
-import Slform from '../components/Slform';
+import StudentLoginForm from '../components/StudentLoginForm';
 import {Actions} from 'react-native-router-flux';
 
  
-export default class Loginn extends Component<{}> {
+export default class Loginn extends Component {
 _call(){
   Actions.ssignup()
 }
@@ -14,7 +14,7 @@ _call(){
       <View style={styles.container}>
         
          <Logo type="Login as Student"/>
-         <Slform/>
+         <StudentLoginForm/>
          <View style={styles.signUP}>
           <Text style={styles.sign}>Dont have an Account. Signup ?</Text>
           <TouchableOpacity onPress={this._call}><Text style={styles.signB}> Signup</Text></TouchableOpacity> 

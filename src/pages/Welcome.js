@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, StatusBar, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import firebase from 'react-native-firebase';
 
 class ImageLoader extends Component {
   state = {
@@ -39,46 +40,45 @@ class ImageLoader extends Component {
   }
 }
 
-
 export default class Loading extends Component {
+
   ShowAlertWithDelay=()=>{
-
     setTimeout(function(){
-
-     Actions.loading()
+      var executed=false;
+      firebase.auth().onAuthStateChanged(function(user) {
+        if(user){
+          if(!executed){
+            executed=true;
+            Actions.drawer();
+          } 
+        } 
+        if(!user) { 
+            Actions.informationMenu(); 
+        }
+      });
 
     }, 2000);
-
 
   }
 
   render() {
-    
-   
     return (
-      
       <View style={styles.container}>
       <StatusBar backgroundColor="#000000" barStyle="light-content" />
       <ImageLoader
-                style={{ flex:1, resizeMode: 'center'}}
-                source={require('../Images/Logo.png')}/> 
-          
-              <Text style={styles.logoText}>
-                Welcome
-                </Text>
-                {this.ShowAlertWithDelay()}
-        
+        style={{ flex:1, resizeMode: 'center', tintColor: 'white'}}
+        source={require('../Images/Logo.png')}/> 
+        <Text style={styles.logoText}>Welcome</Text>
+        {this.ShowAlertWithDelay()}
       </View>
     );
   }
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#18163E',
    alignItems :'center',
    
   },

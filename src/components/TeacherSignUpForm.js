@@ -1,47 +1,48 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,TextInput,TouchableOpacity} from 'react-native';
-import {Actions} from 'react-native-router-flux';
 import firebase from 'react-native-firebase'
+import { Actions } from 'react-native-router-flux';
 
-export default class Tform extends Component<{}> {
-call2(){
-	Actions.drawer()
-}
+export default class Tform extends Component {
+	state = { email: '', password: '', errorMessage: null }
 
-state = { email: '', password: '', errorMessage: null }
-  handleLogin = () => {
-    const { email, password } = this.state
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => this.call2())
-      .catch(error => this.setState({ errorMessage: error.message }))
-  }
+	call2(){
+		Actions.drawer()
+	}
+
+	handleSignUp = () => {
+		firebase
+		.auth()
+		.createUserWithEmailAndPassword(this.state.email, this.state.password)
+		.then(() => this.call2())
+		.catch(error => this.setState({ errorMessage: error.message }))
+	}
+
 	render() {
 		return(
 			<View style={styles.container}>
-				{this.state.errorMessage &&
-         		 <Text style={{ color: 'red' }}>
-            	{this.state.errorMessage}
-          		</Text>}
-				 
+			{this.state.errorMessage &&
+          <Text style={{ color: 'red' }}>
+            {this.state.errorMessage}
+          </Text>}
+				
 				 <TextInput style={styles.inputBox}
 				  placeholder="Email"
 				  placeholderTextColor = "#ffffff"
-				  onChangeText={email => this.setState({ email })}
-         		  value={this.state.email}
+				   onChangeText={email => this.setState({ email })}
+          			value={this.state.email}
 				  />
-				  <TextInput 
+				  <TextInput
 				  secureTextEntry
-				  style={styles.inputBox}
+				   style={styles.inputBox}
 				  placeholder="Password"
 				  secureTextEntry={true}
 				  placeholderTextColor = "#ffffff"
 				  onChangeText={password => this.setState({ password })}
-          		  value={this.state.password}
+                  value={this.state.password}
 				  />
-				  <TouchableOpacity style={styles.button} onPress={this.handleLogin}>
-				  <Text style={styles.buttonText}>Login</Text>
+				  <TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
+				  <Text style={styles.buttonText}>SignUp</Text>
 				  </TouchableOpacity>
 	
         	</View>
@@ -52,7 +53,7 @@ state = { email: '', password: '', errorMessage: null }
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#18163E',
    alignItems :'center',
    justifyContent : 'center',
    
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
 		borderRadius: 25,
 		paddingHorizontal: 16,
 		fontSize: 16,
+		color: '#ffffff',
 		marginVertical: 10,
 	},
 

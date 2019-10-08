@@ -9,24 +9,24 @@ export default class next extends Component {
     	photo: null,
     };
     handleChoosePhoto = () => {
-    const options = {
-      noData: true,
-    };
+		const options = {
+			noData: true,
+		};
     	ImagePicker.showImagePicker(options, response => {
-      	if (response.uri) {
-        this.setState({ photo: response });
+			if (response.uri) {
+				this.setState({ photo: response });
 
-        const image = {
-          path : response.uri.toString(),
-        };
-      	}
+				const image = {
+					path : response.uri.toString(),
+				};
+			}
     	});
   	}
 	_call(){
 		Actions.pictures();
 	};
 	_call2(){
- 		firebase.auth().signOut();
+		 firebase.auth().signOut();
 	}
 	alert(){
 		alert('This feature coming on next update')
@@ -48,25 +48,25 @@ export default class next extends Component {
           				)}
 					</View>
 						<View style={styles.bottomDrawer}>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.dhome}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.dhome}>
 							<Text style={styles.logoText}>Home</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this._call}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this._call}>
 							<Text style={styles.logoText}>Mark Attendance</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Time Table</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Broadcast</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Create event</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
 							<Text style={styles.logoText}>Mark free lecture</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#484848', textAlign: 'center', marginVertical: 5,}} onPress={this._call2}>
+						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>
 				  		</TouchableOpacity>
 					</View>
@@ -77,28 +77,23 @@ export default class next extends Component {
 }
 const styles = StyleSheet.create({
 	container: {
-	flexGrow: 1,
-
-	},
-	drawerText: {
-	color: '#fff'
+		flexGrow: 1,
+		backgroundColor: '#18163E',
 	},
 	topDrawer: {
-	flex: 1,
-	justifyContent: 'center',
-	alignContent: 'center',
-	alignItems: 'center'
+		flex: 1,
+		justifyContent: 'center',
+		alignContent: 'center',
+		alignItems: 'center'
 	},
 	bottomDrawer: {
-	flex: 2,
-	backgroundColor: '#212121',
+		flex: 2,
+		backgroundColor: '#18163E',
 	},
-
   	logoText : {
-      marginVertical: 10,
-      fontSize: 18,
-      color: '#ffffff',
-      textAlign: 'center',
+		marginVertical: 10,
+		fontSize: 18,
+		color: '#000',
+		textAlign: 'center',
     },
-
 });

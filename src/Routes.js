@@ -1,31 +1,31 @@
 import React, { Component} from 'react';
 import {Router, Stack, Scene} from 'react-native-router-flux';
-import Fpage from './pages/Fpage';
-import Flog from './pages/Flog';
-import Tlogin from './pages/Tlogin';
-import Ssignup from './pages/Ssignup';
-import Tsignup from './pages/Tsignup';
-import SchoolCode from './pages/SchoolCode';
-import Loading from './pages/Loading';
+import Welcome from './pages/Welcome';
+import TeacherORstudent from './pages/TeacherORstudent';
+import Login from './pages/Login';
+import StudentSignUp from './pages/StudentSignUp';
+import TeacherSignUp from './pages/TeacherSignUp';
+import CollegeCode from './pages/CollegeCode';
+import InformationMenu from './pages/InformationMenu';
 import Home from './pages/Home';
 import DrawerContent from './components/DrawerContent';
-import Pictures from './pages/Pictures';
-import ImageUpload from './pages/ImageUpload';
+import AttendanceForm from './pages/AttendanceForm';
+import AttendanceUpdatedPage from './components/AttendanceUpdatedPage';
 
 
-export default class Routes extends Component<{}> {
+export default class Routes extends Component {
 	render() {
 		return( 
-			<Router navigationBarStyle={{ backgroundColor: '#3d5afe' }}>
-		    <Stack key="root" >
-		      <Scene key="fpage" component={Fpage} hideNavBar={true} />
-		      <Scene key="code" component={SchoolCode} hideNavBar={true}/>
-		      <Scene key="loading" component={Loading} hideNavBar={true} />
-		      <Scene key="tlogin" component={Tlogin} title="Login"/>
-		      <Scene key="flog" component={Flog} hideNavBar={true}/>
-		      <Scene key="ssignup" component={Ssignup} title="Student SignUp"/>
-		      <Scene key="tsignup" component={Tsignup} title="Teacher SignUp"/>
-		     <Scene key="drawer"
+			<Router navigationBarStyle={{ backgroundColor: '#18163E' }}>
+		    <Stack key="root">
+				<Scene key="welcome" component={Welcome} hideNavBar={true} />
+				<Scene key="collegeCode" component={CollegeCode} hideNavBar={true}/>
+				<Scene key="informationMenu" component={InformationMenu} hideNavBar={true} />
+				<Scene key="login" component={Login} hideNavBar={true}/>
+				<Scene key="teacherORstudent" component={TeacherORstudent} hideNavBar={true}/>
+				<Scene key="StudentSignUp" component={StudentSignUp} title="Student SignUp" hideNavBar={true}/>
+				<Scene key="TeacherSignUp" component={TeacherSignUp} title="Teacher SignUp" hideNavBar={true}/>
+				<Scene key="drawer"
 					drawer
 					contentComponent={DrawerContent}
 					drawerWidth = {250}
@@ -33,13 +33,11 @@ export default class Routes extends Component<{}> {
 					hideNavBar={true}
 				>
 				<Scene key="home" component={Home} hideNavBar={true} />
-				    <Scene key="pictures" component={Pictures} title="Attendance" />
-				       <Scene key="imgup" component={ImageUpload} hideNavBar={true}/>
+				    <Scene key="attendanceForm" component={AttendanceForm} hideNavBar={true}/>
+				       	<Scene key="attendanceUpdatedPage" component={AttendanceUpdatedPage} hideNavBar={true}/>
 				</Scene>
-		     
 		    </Stack>
 		  </Router>
-			)	
-		
+		)	
 	} 
 }

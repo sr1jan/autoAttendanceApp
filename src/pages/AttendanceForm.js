@@ -1,32 +1,106 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,StatusBar,TextInput, Image, TouchableOpacity, Button,AsyncStorage} from 'react-native';
+import { Text, View, StyleSheet,StatusBar, Alert, TouchableOpacity, ProgressBarAndroid } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import RNPickerSelect from 'react-native-picker-select';
+import ImagePicker from 'react-native-image-picker';
 import firebase from 'react-native-firebase';
+class ImageLoader extends Component {
+  state = {
+    opacity: new Animated.Value(0),
+  }
+
+  onLoad = () => {
+    Animated.timing(this.state.opacity, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  }
+
+  render() {
+    return(
+      <Animated.Image
+      onLoad={this.onLoad}
+      {...this.props}
+      style={[
+        {
+          opacity: this.state.opacity,
+          transform: [
+            {
+              scale: this.state.opacity.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0.85, 1],
+              })
+            }
+          ]
+        },
+          this.props.style,
+        ]}
+        />
+      )
+  }
+}
 
 export default class Attend extends Component {
-	state={
+  state={
     Department:'',
     class:'',
     subject:'',
     lectureType: '',
     lecturesNum: 0,
-   }
-   AttendanceInstance = () => {
-        firebase.firestore().collection("AttendanceInstance").doc("CurrentAttendance").update({
-            subject: this.state.subject, 
-            lectureType: this.state.lectureType,
-            lecturesNum: this.state.lecturesNum,
-        });
-        Actions.imgup();
+    status:'Take Photo',
+    photo: null,
+    progressBarStatus: false,
+  }
+  AttendanceInstance = () => {
+    if(!this.state.subject || !this.state.lectureType || !this.state.lecturesNum){
+      return Alert.alert('Incomplete form','Please fill in the above information before proceeding')
+    }
+    firebase.firestore().collection("AttendanceInstance").doc("CurrentAttendance").update({
+        subject: this.state.subject, 
+        lectureType: this.state.lectureType,
+        lecturesNum: this.state.lecturesNum,
+    }).then(this.handleChoosePhoto());
+  };
+
+  test(){
+    Actions.attendanceUpdatedPage();
+  }
+  handleChoosePhoto = () => {
+    
+    const options = {
+      noData: true,
     };
-	
-	 render() {
-	    return (
-		    <View style={styles.container}>
-		      	<StatusBar backgroundColor="#000000" barStyle="light-content"
-		      	/>
-		      	<Text style={styles.dept}>Select Department</Text>
+
+    ImagePicker.showImagePicker(options, response => {
+      if (response.uri) {
+        this.setState({ photo: response });
+
+        const image = {
+          path : response.uri.toString(),
+        };
+        this.setState({status: 'Uploading...   ', progressBarStatus: true})
+        this.uploadImage(image, 'Test Image')
+          .then(() => this.test() )
+          .catch((error) => {
+              console.log(error.message);
+              Alert.alert('Error', 'Something went wrong');
+          });
+      }
+    });
+  }
+
+  uploadImage = async (image, imageName) => {
+    return firebase.storage().ref(imageName).putFile(image.path);
+  }
+    
+     render() {
+      const { progressBarStatus } = this.state;
+        return (
+            <View style={styles.container}>
+                <StatusBar backgroundColor="#000000" barStyle="light-content"
+                />
+                <Text style={styles.dept}>Select Department</Text>
                 <RNPickerSelect style={{marginVertical: 180, alignItems: 'center'}}
                         onValueChange={(value) => this.setState({Department: value})}
                         items={[
@@ -77,20 +151,23 @@ export default class Attend extends Component {
                         { label: '4', value: '4' },    
                     ]}
                 />
-            	<TouchableOpacity 
-                    style={{ backgroundColor: 'black', alignItems: 'center' }} 
-                    onPress={this.AttendanceInstance}	           
+                <TouchableOpacity 
+                    style={{ backgroundColor: '#fff', alignItems: 'center', marginVertical: 30}} 
+                    onPress={this.AttendanceInstance}              
                 >
-                    <Text style={{ color: 'white', textAlign: 'center', padding: 5 }}> Take Attendance </Text>
+                    <Text style={{ color: '#000', textAlign: 'center', padding: 8, }}> Take Photo </Text>
                 </TouchableOpacity>
-		    </View>
-	     );
-	 }
+                {progressBarStatus && (
+                  <ProgressBarAndroid styleAttr="Horizontal" color="#fff" />
+                )}
+            </View>
+         );
+     }
 }
 const styles = StyleSheet.create({
   container: {
    flex: 1,
-   backgroundColor: '#3d5afe',
+   backgroundColor: '#18163E',
    justifyContent:'center',
    alignItems: 'center'
    
