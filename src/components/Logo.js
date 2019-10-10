@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,Image,ImageBackground} from 'react-native';
-
 export default class Logo extends Component {
 	render() {
 		return(
@@ -21,17 +20,10 @@ const styles = StyleSheet.create({
    backgroundColor: '#18163E',
    alignItems :'center',
    justifyContent : 'center',
-   
   },
-
   logoText : {
-      marginVertical: 30,
-      fontSize: 30,
-      color : 'rgba(255, 255, 255, 0.7)'
-    },
-
-	
-
-
-
+    marginVertical: 30,
+    fontSize: 30,
+    color : 'rgba(255, 255, 255, 0.7)'
+  },
 });

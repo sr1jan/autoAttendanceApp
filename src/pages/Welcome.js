@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, StatusBar, Animated} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import firebase from 'react-native-firebase';
-
 class ImageLoader extends Component {
   state = {
     opacity: new Animated.Value(0),
@@ -39,26 +38,25 @@ class ImageLoader extends Component {
       )
   }
 }
-
 export default class Loading extends Component {
 
   ShowAlertWithDelay=()=>{
     setTimeout(function(){
       var executed=false;
+      var once=false;
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
           if(!executed){
             executed=true;
-            Actions.drawer();
+            Actions.drawer({type: 'reset'});
           } 
         } 
         if(!user) { 
-            Actions.informationMenu(); 
+          Actions.informationMenu({type: 'reset'});
         }
       });
 
     }, 2000);
-
   }
 
   render() {
@@ -74,7 +72,6 @@ export default class Loading extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
    flexGrow: 1,
@@ -88,7 +85,4 @@ const styles = StyleSheet.create({
       fontSize: 30,
       color : 'rgba(255, 255, 255, 0.7)'
     },
-  
 });
-
-

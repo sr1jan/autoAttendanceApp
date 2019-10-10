@@ -11,8 +11,6 @@ import Home from './pages/Home';
 import DrawerContent from './components/DrawerContent';
 import AttendanceForm from './pages/AttendanceForm';
 import AttendanceUpdatedPage from './components/AttendanceUpdatedPage';
-
-
 export default class Routes extends Component {
 	render() {
 		return( 
