@@ -14,14 +14,14 @@ import AttendanceUpdatedPage from './components/AttendanceUpdatedPage';
 export default class Routes extends Component {
 	render() {
 		return( 
-			<Router navigationBarStyle={{ backgroundColor: '#18163E' }}>
+			<Router navigationBarStyle={{ backgroundColor: 'white' }}>
 		    <Stack key="root">
 				<Scene key="welcome" component={Welcome} hideNavBar={true} />
 				<Scene key="collegeCode" component={CollegeCode} hideNavBar={true}/>
 				<Scene key="informationMenu" component={InformationMenu} hideNavBar={true} />
 				<Scene key="login" component={Login} hideNavBar={true}/>
-				<Scene key="teacherORstudent" component={TeacherORstudent} hideNavBar={true}/>
-				<Scene key="StudentSignUp" component={StudentSignUp} title="Student SignUp" hideNavBar={true}/>
+				<Scene key="teacherORstudent" component={TeacherORstudent} title="SignUP"/>
+				<Scene key="StudentSignUp" component={StudentSignUp} title="Student SignUp"/>
 				<Scene key="TeacherSignUp" component={TeacherSignUp} title="Teacher SignUp" hideNavBar={true}/>
 				<Scene key="drawer"
 					drawer

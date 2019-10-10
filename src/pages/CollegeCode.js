@@ -20,7 +20,7 @@ export default class Code extends Component {
 
 	_call2 = () => {
 		if(this.state.scode==this.state.incode){
-			Actions.login()
+			Actions.login({ type: 'reset' })
 		}else{
 			Alert.alert('Uh-oh!','Wrong college code');
 		}
@@ -46,7 +46,7 @@ export default class Code extends Component {
 		        <Text style={{ color: 'red' }}>
 		        {this.state.errorMessage}
 		        </Text>}
-		      	<StatusBar backgroundColor="#000000" barStyle="light-content"
+		      	<StatusBar backgroundColor="#18163E" barStyle="light-content"
 		      	/>
 		      		<Image
 		                style={{ resizeMode: 'center', tintColor: 'white' }}
