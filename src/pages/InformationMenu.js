@@ -1,6 +1,6 @@
 import React, {Component }from 'react'
 import {Actions} from 'react-native-router-flux';
-import { View, Text, ActivityIndicator, StyleSheet, StatusBar,Animated, Image,ImageBackground} from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet, StatusBar,Animated, Image,ImageBackground,BackHandler} from 'react-native'
 import firebase from 'react-native-firebase';
 import Onboarding from 'react-native-onboarding-swiper';
 
@@ -8,6 +8,21 @@ export default class Loading extends React.Component {
 	CollegeCode(){
 		Actions.collegeCode();
 	}
+  state={
+    current: true,
+  }
+  componentDidMount=()=>{
+  BackHandler.addEventListener('hardwareBackPress', function() {
+  // this.onMainScreen and this.goBack are just examples, you need to use your own implementation here
+  // Typically you would use the navigator here to go to the last state.
+
+  if (true) {
+    
+    return true;
+  }
+  return false;
+});
+}
   render( ) {
   return (
     <Onboarding 

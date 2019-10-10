@@ -1,6 +1,6 @@
 import React, {Fragment, Component} from 'react';
 import {Actions} from 'react-native-router-flux';
-import { SafeAreaView, StyleSheet,Animated, ScrollView, Image,View, Text, StatusBar,TouchableOpacity,ImageBackground} from 'react-native';
+import { SafeAreaView, StyleSheet,Animated, ScrollView, Image,View, Text, StatusBar,TouchableOpacity,ImageBackground,BackHandler} from 'react-native';
 import {Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
 import firebase from 'react-native-firebase';
 import LottieView from 'lottie-react-native';
@@ -48,9 +48,24 @@ export default class Home extends Component {
 	alert(){
 		alert('This feature coming on next update')
 	}
+	state={
+		current: true,
+	}
   openDrawer(){
     Actions.drawerOpen();
   }
+  componentDidMount=()=>{
+  BackHandler.addEventListener('hardwareBackPress', function() {
+  // this.onMainScreen and this.goBack are just examples, you need to use your own implementation here
+  // Typically you would use the navigator here to go to the last state.
+
+  if (true) {
+   
+    return true;
+  }
+  return false;
+});
+}
 	render(){
 		return (
       <SafeAreaView style={{flex: 1, backgroundColor: '#18163E'}}>
