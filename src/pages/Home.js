@@ -48,9 +48,11 @@ export default class Home extends Component {
 	alert(){
 		alert('This feature coming on next update')
 	}
-  openDrawer(){
-    Actions.drawerOpen();
-  }
+
+	openDrawer(){
+	   Actions.drawerOpen();
+	}
+
 	render(){
 		return (
       <SafeAreaView style={{flex: 1, backgroundColor: '#18163E'}}>
@@ -59,8 +61,8 @@ export default class Home extends Component {
            <TouchableOpacity onPress={this.openDrawer}>
             <LottieView 
               autoSize={true}
-              style={{ width: 90 }}
-              source={require('../components/drawerButton.json')} 
+              style={{ width: 120 }}
+              source={require('../components/drawerButton.json')} autoPlay loop
             />
           </TouchableOpacity>
         </View> 

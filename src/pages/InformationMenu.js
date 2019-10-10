@@ -3,10 +3,9 @@ import {Actions} from 'react-native-router-flux';
 import { View, Text, ActivityIndicator, StyleSheet, StatusBar,Animated, Image,ImageBackground} from 'react-native'
 import firebase from 'react-native-firebase';
 import Onboarding from 'react-native-onboarding-swiper';
-
 export default class Loading extends React.Component {
 	CollegeCode(){
-		Actions.collegeCode();
+		Actions.collegeCode({ type: 'reset' });
 	}
   render( ) {
   return (

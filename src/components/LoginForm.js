@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, Alert, StyleSheet, StatusBar, TextInput, TouchableOpacity } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import firebase from 'react-native-firebase'
-
 export default class Tform extends Component {
 
 	state = { 
@@ -12,7 +11,7 @@ export default class Tform extends Component {
 	}
 
 	call2(){
-		Actions.drawer()
+		Actions.drawer({type: 'reset'});
 	}
 
 	handleLogin = () => {
@@ -57,7 +56,6 @@ export default class Tform extends Component {
 		)
 	}
 }
-
 const styles = StyleSheet.create({
 	container: {
 		flexGrow: 1,
