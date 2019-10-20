@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
    justifyContent : 'center',
   },
   logoText : {
-    marginVertical: 30,
+    padding: 30,
+    textAlign: 'center',
     fontSize: 30,
     color : 'rgba(255, 255, 255, 0.7)'
   },

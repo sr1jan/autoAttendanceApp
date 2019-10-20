@@ -11,7 +11,7 @@ _onPressButton() {
   }
 
   _callToStudent(){
-    Actions.StudentSignUp()
+    Actions.studentSignUp()
   }
   render() {
     return (

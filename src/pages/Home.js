@@ -42,6 +42,9 @@ class ImageLoader extends Component {
   }
 }
 export default class Home extends Component {
+  state={
+    Nmae: '',
+  }
 	markAttendance(){
 		Actions.attendanceForm()
 	}
@@ -51,7 +54,16 @@ export default class Home extends Component {
 
 	openDrawer(){
 	   Actions.drawerOpen();
-	}
+  }
+  componentDidMount() {
+    var instance = firebase.auth().currentUser;
+    var uid=instance.uid;
+    var docRef = firebase.firestore().collection("StudentsData").doc(uid);
+    docRef.get().then((doc) => {
+      const name = doc.data().name;
+      this.setState({Name: name});
+    });
+  }
 
 	render(){
 		return (
@@ -67,6 +79,7 @@ export default class Home extends Component {
           </TouchableOpacity>
         </View> 
         <View style={styles.container}>
+        <Text style={styles.logoText}>Hello {this.state.Name}</Text>
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity onPress={this.markAttendance}> 
               <ImageLoader
@@ -115,9 +128,9 @@ const styles = StyleSheet.create({
   },
 
   logoText : {
-    marginVertical: 50,
+    marginVertical: 30,
     fontSize: 30,
-    color : '#000'
+    color : '#fff'
   },
 });
 

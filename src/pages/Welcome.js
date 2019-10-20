@@ -42,18 +42,32 @@ export default class Loading extends Component {
 
   ShowAlertWithDelay=()=>{
     setTimeout(function(){
-      var executed=false;
-      var once=false;
+      var executed=5;
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
-          if(!executed){
-            executed=true;
-            Actions.drawer({type: 'reset'});
+          if(executed==5){
+            executed=1;
+            {
+              var instance = firebase.auth().currentUser;
+              var uid=instance.uid;
+              var docRef = firebase.firestore().collection("StudentsData").doc(uid);
+              docRef.get().then(function(doc) {
+                if(doc.data().dasbord=="student"){
+                  Actions.studentDrawer({type: 'reset'});
+                }
+                else{
+                  Actions.drawer({type : 'reset'});
+                }
+              }); 
+            }
           } 
         } 
-        if(!user) { 
-          Actions.informationMenu({type: 'reset'});
-        }
+        if(!user) {
+          if(executed==5){
+            executed=1; 
+            Actions.informationMenu({type: 'reset'});
+          }
+         }
       });
 
     }, 2000);

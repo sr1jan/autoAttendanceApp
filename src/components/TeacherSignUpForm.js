@@ -25,7 +25,7 @@ export default class Tform extends Component {
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
-				
+
 				 <TextInput style={styles.inputBox}
 				  placeholder="Email"
 				  placeholderTextColor = "#ffffff"

@@ -21,9 +21,6 @@ export default class next extends Component {
 			}
     	});
   	}
-	_call(){
-		Actions.attendanceForm();
-	};
 	_call2(){
 		 firebase.auth().signOut();
 		 Actions.login();
@@ -32,7 +29,7 @@ export default class next extends Component {
 		alert('This feature coming on next update')
 	}
 	dhome(){
-		Actions.home()
+		Actions.studentHome()
 	}
 	render(){
 		const { photo } = this.state;
@@ -48,25 +45,25 @@ export default class next extends Component {
           				)}
 					</View>
 						<View style={styles.bottomDrawer}>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.dhome}>
+						<TouchableOpacity style={styles.drawerbars} onPress={this.dhome}>
 							<Text style={styles.logoText}>Home</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this._call}>
-							<Text style={styles.logoText}>Mark Attendance</Text>
+						<TouchableOpacity style={styles.drawerbars} onPress={this._call}>
+							<Text style={styles.logoText}>Live Attendance</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
+						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
 							<Text style={styles.logoText}>Time Table</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
-							<Text style={styles.logoText}>Broadcast</Text>
+						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
+							<Text style={styles.logoText}>NewsFeed</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
-							<Text style={styles.logoText}>Create event</Text>
+						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
+							<Text style={styles.logoText}>Register complaint</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this.alert}>
-							<Text style={styles.logoText}>Mark free lecture</Text>
+						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
+							<Text style={styles.logoText}>Bole jai maa kaali</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={{width: 250, backgroundColor: '#fff', textAlign: 'center', marginVertical: 5,}} onPress={this._call2}>
+						<TouchableOpacity style={styles.drawerbars} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>
 				  		</TouchableOpacity>
 					</View>
@@ -93,7 +90,15 @@ const styles = StyleSheet.create({
   	logoText : {
 		marginVertical: 10,
 		fontSize: 18,
-		color: '#000',
+		color: '#fff',
 		textAlign: 'center',
-    },
+	},
+	drawerbars: {
+		width: '100%',
+		backgroundColor: 'rgba(255, 255, 255, 0.05)',
+		borderRadius: 20,
+		textAlign: 'center',
+		marginVertical: 5,
+		alignSelf: 'center',
+	},
 });

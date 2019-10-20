@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Alert, StyleSheet, StatusBar, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, Alert, StyleSheet, StatusBar, TextInput, TouchableOpacity, ProgressBarAndroid } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import firebase from 'react-native-firebase'
 export default class Tform extends Component {
@@ -7,10 +7,30 @@ export default class Tform extends Component {
 	state = { 
 		email: '', 
 		password: '', 
-		errorMessage: null 
+		dashboardType: '',
+		errorMessage: null,
+		progressBarStatus: false,
 	}
-
+	test(){
+		{
+			var user = firebase.auth().currentUser;
+			var uid=user.uid;
+			var docRef = firebase.firestore().collection("StudentsData").doc(uid);
+			docRef.get().then(function(doc) {
+				if(doc.data().dasbord=="student"){
+					Actions.studentDrawer({type: 'reset'});
+				}
+				else{
+					Actions.drawer({type : 'reset'});
+				}
+			});
+		}
+		{
+			
+		}
+	}
 	call2(){
+		
 		Actions.drawer({type: 'reset'});
 	}
 
@@ -18,15 +38,17 @@ export default class Tform extends Component {
 		if (!this.state.email || !this.state.password) {
 			Alert.alert("Login or Password can not be empty")
 		} else {
+			this.setState({progressBarStatus: true})
 			firebase
 			.auth()
 			.signInWithEmailAndPassword(this.state.email, this.state.password)
-			.then(() => this.call2())
+			.then(() => this.test())
 			.catch(error => this.setState({ errorMessage: error.message }))
 		}
 	}
 
 	render() {
+		const { progressBarStatus } = this.state;
 		return(
 			<View style={styles.container}>
 				{this.state.errorMessage &&
@@ -52,6 +74,9 @@ export default class Tform extends Component {
 				  <TouchableOpacity style={styles.button} onPress={this.handleLogin}>
 					<Text style={styles.buttonText}>Login</Text>
 				  </TouchableOpacity>
+				  {progressBarStatus && (
+                  <ProgressBarAndroid styleAttr="Horizontal" color="#fff" />
+                )}
         	</View>
 		)
 	}
@@ -65,6 +90,7 @@ const styles = StyleSheet.create({
 	},
 	inputBox: {
 		width: 300,
+		color: '#ffffff',
 		backgroundColor: 'rgba(255, 255, 255, 0.3)',
 		borderRadius: 25,
 		paddingHorizontal: 16,
