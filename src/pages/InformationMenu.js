@@ -5,7 +5,7 @@ import firebase from 'react-native-firebase';
 import Onboarding from 'react-native-onboarding-swiper';
 export default class Loading extends React.Component {
 	CollegeCode(){
-		Actions.collegeCode();
+		Actions.collegeCode({ type: 'reset' });
 	}
   render( ) {
   return (
