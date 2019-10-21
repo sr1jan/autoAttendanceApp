@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet,StatusBar,TextInput,TouchableOpacity} from 'react-native';
-import firebase from 'react-native-firebase'
+import firebase from '@react-native-firebase/app';
 import { Actions } from 'react-native-router-flux';
 
 export default class Tform extends Component {

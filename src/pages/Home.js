@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import {Actions} from 'react-native-router-flux';
 import { SafeAreaView, StyleSheet,Animated, ScrollView, Image,View, Text, StatusBar,TouchableOpacity,ImageBackground} from 'react-native';
 import {Header, LearnMoreLinks, Colors, DebugInstructions, ReloadInstructions, } from 'react-native/Libraries/NewAppScreen';
-import firebase from 'react-native-firebase';
+import firebase from '@react-native-firebase/app';
 import LottieView from 'lottie-react-native';
 class ImageLoader extends Component {
 
