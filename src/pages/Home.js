@@ -43,7 +43,7 @@ class ImageLoader extends Component {
 }
 export default class Home extends Component {
   state={
-    Nmae: '',
+    Name: '',
   }
 	markAttendance(){
 		Actions.attendanceForm()

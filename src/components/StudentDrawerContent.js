@@ -23,7 +23,7 @@ export default class next extends Component {
   	}
 	_call2(){
 		 firebase.auth().signOut();
-		 Actions.login();
+		 Actions.login({ type: 'reset' });
 	}
 	alert(){
 		alert('This feature coming on next update')
