@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Alert, StyleSheet, StatusBar, TextInput, TouchableOpacity, ProgressBarAndroid } from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import firebase from 'react-native-firebase'
+import firebase from '@react-native-firebase/app';
 export default class Tform extends Component {
 
 	state = { 

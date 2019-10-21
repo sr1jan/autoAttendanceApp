@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, ScrollView, StatusBar,TouchableOpacity, TextInp
 import Swiper from "react-native-web-swiper";
 import Logo from '../components/Logo';
 import RNPickerSelect from 'react-native-picker-select';
-import firebase from 'react-native-firebase'
+import firebase from '@react-native-firebase/app';
 import { Actions } from "react-native-router-flux";
 export default class studentSignup extends React.Component {
   StudentHome(){

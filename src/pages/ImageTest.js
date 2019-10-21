@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text,Image, View, StyleSheet,StatusBar, Alert, TouchableOpacity,PixelRatio, ProgressBarAndroid } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import firebase from 'react-native-firebase';
+import firebase from '@react-native-firebase/app';
 
 export default class Attend extends Component {
   state={
@@ -56,7 +56,7 @@ export default class Attend extends Component {
   }
 
   uploadImage = async (image, fnam, imageName) => {
-    return firebase.storage().ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
+    return firebase.app().storage('gs://faceattendance-253619-4f9k7').ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
   }
     
      render() {

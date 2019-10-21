@@ -1,7 +1,7 @@
 import React, { Fragment, Component} from 'react';
 import {Actions} from 'react-native-router-flux';
 import { View, Text, StyleSheet ,Animated, Image, StatusBar, TouchableOpacity } from 'react-native';
-import firebase from 'react-native-firebase';
+import firebase from '@react-native-firebase/app';
 import ImagePicker from 'react-native-image-picker';
 export default class next extends Component {
 	state = {
