@@ -98,7 +98,7 @@ export default class Attend extends Component {
       const { progressBarStatus } = this.state;
         return (
             <View style={styles.container}>
-                <StatusBar backgroundColor="#000000" barStyle="light-content"
+                <StatusBar backgroundColor="#18163E" barStyle="light-content"
                 />
                 <Text style={styles.dept}>Select Department</Text>
                 <RNPickerSelect style={{marginVertical: 180, alignItems: 'center'}}
@@ -170,7 +170,6 @@ const styles = StyleSheet.create({
    backgroundColor: '#18163E',
    justifyContent:'center',
    alignItems: 'center'
-   
   },
 
   dept:{

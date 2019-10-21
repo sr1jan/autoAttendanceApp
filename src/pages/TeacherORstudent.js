@@ -16,7 +16,7 @@ _onPressButton() {
   render() {
     return (
       <View style={styles.container}>
-      <StatusBar backgroundColor="#000000" barStyle="light-content" />
+      <StatusBar backgroundColor="#18163E" barStyle="light-content" />
           <Logo type="Get Started as"/>  
         
         <View style={styles.buttonContainer}>

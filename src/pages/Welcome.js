@@ -76,7 +76,7 @@ export default class Loading extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <StatusBar backgroundColor="#000000" barStyle="light-content" />
+      <StatusBar backgroundColor="#18163E" barStyle="light-content" />
       <ImageLoader
         style={{ flex:1, resizeMode: 'center', tintColor: 'white'}}
         source={require('../Images/Logo.png')}/> 
