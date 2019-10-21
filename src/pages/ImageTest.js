@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Text,Image, View, StyleSheet,StatusBar, Alert, TouchableOpacity,PixelRatio, ProgressBarAndroid } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'react-native-firebase';
+
 export default class Attend extends Component {
   state={
+    i: 1,
     status:'Take Photo',
     photo: null,
     progressBarStatus: false,
@@ -16,6 +18,7 @@ export default class Attend extends Component {
     avatarSource7: null,
     avatarSource8: null,
     Name: '',
+    Fnam: '',
   }
   Move=()=>{
     this.setState({progressBarStatus: false});
@@ -27,21 +30,22 @@ export default class Attend extends Component {
 		var docRef = firebase.firestore().collection("StudentsData").doc(uid);
 		docRef.get().then((doc)=> {
             const Studentname=doc.data().name;
-            this.setState({Name: Studentname});
+            const Count=doc.data().i;
+            this.setState({i: Count});
+            this.setState({Fnam: Studentname, Name: Studentname+this.state.i++});
+            firebase.firestore().collection("StudentsData").doc(uid).update({ i: this.state.i})
         });
     const options = {
       noData: true,
     };
-
     ImagePicker.showImagePicker(options, response => {
       if (response.uri) {
         this.setState({ photo: response });
-
         const image = {
           path : response.uri.toString(),
         };
         this.setState({progressBarStatus: true, [key]: response})
-        this.uploadImage(image, this.state.Name)
+        this.uploadImage(response, this.state.Fnam, this.state.Name)
           .then(() => this.Move() )
           .catch((error) => {
               console.log(error.message);
@@ -51,8 +55,8 @@ export default class Attend extends Component {
     });
   }
 
-  uploadImage = async (image, imageName) => {
-    return firebase.storage().ref(imageName).putFile(image.path);
+  uploadImage = async (image, fnam, imageName) => {
+    return firebase.storage().ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
   }
     
      render() {
@@ -172,7 +176,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatar: {
-    color: '#fff',
     borderRadius: 75,
     width: 130,
     height: 130,

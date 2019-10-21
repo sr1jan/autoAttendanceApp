@@ -23,6 +23,7 @@ export default class studentSignup extends React.Component {
       email: this.state.email,
       rollNo: "SCS"+this.state.RollNo,
       dasbord: "student",
+      i: 1,
     });
     Actions.studentDrawer();
   }

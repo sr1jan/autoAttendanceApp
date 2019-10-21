@@ -13,6 +13,7 @@ import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage; 
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.List;
 

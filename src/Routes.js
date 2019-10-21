@@ -25,7 +25,6 @@ export default class Routes extends Component {
 				<Scene key="login" component={Login} hideNavBar={true}/>
 				<Scene key="teacherORstudent" component={TeacherORstudent} hideNavBar={true}/>
 				<Scene key="TeacherSignUp" component={TeacherSignUp} title="Teacher SignUp" hideNavBar={true}/>
-				<Scene key="imageTest" component={ImageTest} title="Image upload" hideNavBar={true}/>
 				<Scene key="studentSignUp" component={StudentSignUp} title="Student SignUp" hideNavBar={true}/>
 				<drawer key="drawer"
 					drawer
@@ -49,6 +48,7 @@ export default class Routes extends Component {
 				>
 					<Scene key ="root">
 				<Scene key="studentHome" component={StudentHome} hideNavBar={true} />
+				<Scene key="imageTest" component={ImageTest} title="Image upload" hideNavBar={true}/>
 				</Scene>
 				</drawer>
 		    </Scene>
