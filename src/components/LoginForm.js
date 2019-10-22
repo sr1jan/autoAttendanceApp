@@ -24,7 +24,7 @@ export default class Tform extends Component {
 					Actions.drawer({type : 'reset'});
 				}
 			})
-			.catch(error => this.setState({ errorMessage: error.message }));
+			.catch(error => this.setState({progressBarStatus: false }));
 		}
 	}
 	handleLogin = () => {
