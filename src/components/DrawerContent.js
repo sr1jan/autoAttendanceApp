@@ -59,7 +59,7 @@ export default class next extends Component {
     	});
 	  }
 	uploadImage = async (image, fnam, imageName) => {
-		return firebase.storage().ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
+		return firebase.app().storage('gs://faceattendance-253619-4f9k7').ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
 	}
 	_call(){
 		Actions.attendanceForm();

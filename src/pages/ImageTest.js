@@ -22,6 +22,7 @@ export default class Attend extends Component {
   }
   Move=()=>{
     this.setState({progressBarStatus: false});
+
   }
   handleChoosePhoto = key => val => {
     var user = firebase.auth().currentUser;

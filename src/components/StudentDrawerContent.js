@@ -5,14 +5,16 @@ import firebase from '@react-native-firebase/app';
 import ImagePicker from 'react-native-image-picker';
 export default class next extends Component {
 	state = {
+		oneTime: 1,
 		photo: null,
 		progressBarStatus: false,
 		Name: '',
 		Fnam: '',
 		ProfilePic: null,
 		UL: null,
+		access: false,
 	};
-	yetn= async () => {
+	profile= async () => {
 		var user = firebase.auth().currentUser;
 		var uid=user.uid;
 		var docRef = firebase.firestore().collection("StudentsData").doc(uid);
@@ -22,14 +24,13 @@ export default class next extends Component {
 		})
 		const fnam=this.state.Fnam;
 		const imageName=this.state.Name;
-		const url = firebase.storage().ref('StudentsTrainingImage/'+fnam+'/'+imageName).downloadFile();
-		this.setState({UL: url})
-		console.log(url);
-		console.log('StudentsTrainingImage/'+fnam+'/'+imageName);
-		
+		const url = firebase.app().storage('gs://faceattendance-253619-4f9k7').ref('StudentsTrainingImage/'+fnam+'/'+imageName)
+		const imgurl = await url.getDownloadURL();
+		this.setState({UL: imgurl})
 	}
 	Move=()=>{
 		this.setState({progressBarStatus: false});
+		this.setState({oneTime: 1});
 	}
     handleChoosePhoto = key => val => {
 		var user = firebase.auth().currentUser;
@@ -53,13 +54,12 @@ export default class next extends Component {
           			.then(() => this.Move() )
           			.catch((error) => {
               		console.log(error.message);
-              		Alert.alert('Error', 'Something went wrong');
           		});
 			}
-    	});
+		});
 	  }
 	uploadImage = async (image, fnam, imageName) => {
-		return firebase.storage().ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
+		return firebase.app().storage('gs://faceattendance-253619-4f9k7').ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
 	}
 	_call2(){
 		 firebase.auth().signOut();
@@ -73,7 +73,12 @@ export default class next extends Component {
 		Actions.studentHome()
 	}
 	render(){
-		const { photo, progressBarStatus } = this.state;
+		const { UL, oneTime, progressBarStatus } = this.state;
+		if(oneTime<=10){
+			console.log("im here");
+			this.state.oneTime++;
+			{this.profile()}
+		}
 		return (
 			<Fragment>
 				<View style={ styles.container }>
@@ -81,10 +86,10 @@ export default class next extends Component {
 						<TouchableOpacity onPress={this.handleChoosePhoto('ProfilePic')}>
 						<View
 							style={[styles.avatar, styles.avatarContainer, {marginBottom: 20,}]}>
-							{this.state.ProfilePic === null ? (
+							{this.state.UL === null ? (
 							<Text style={{color: '#fff',}}>Upload Profile Pic</Text>
 							) : (
-							<Image style={styles.avatar} source={this.state.ProfilePic} />
+								<Image style={styles.avatar} source={{uri : this.state.UL}} />
 							)}
 							{progressBarStatus && (
                   				<ProgressBarAndroid styleAttr="Horizontal" color="#fff" />
@@ -114,7 +119,6 @@ export default class next extends Component {
 						<TouchableOpacity style={styles.drawerbars} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>
 				  		</TouchableOpacity>
-						  
 					</View>
 				</View>
 			</Fragment>
