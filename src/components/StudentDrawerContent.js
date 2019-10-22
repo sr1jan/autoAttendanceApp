@@ -1,48 +1,96 @@
 import React, { Fragment, Component} from 'react';
 import {Actions} from 'react-native-router-flux';
-import { View, Text, StyleSheet ,Animated, Image, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet , Image, PixelRatio, TouchableOpacity, ProgressBarAndroid } from 'react-native';
 import firebase from 'react-native-firebase';
 import ImagePicker from 'react-native-image-picker';
 export default class next extends Component {
 	state = {
-    	photo: null,
-    };
-    handleChoosePhoto = () => {
+		photo: null,
+		progressBarStatus: false,
+		Name: '',
+		Fnam: '',
+		ProfilePic: null,
+		UL: null,
+	};
+	yetn= async () => {
+		var user = firebase.auth().currentUser;
+		var uid=user.uid;
+		var docRef = firebase.firestore().collection("StudentsData").doc(uid);
+		docRef.get().then((doc)=> {
+            const Studentname=doc.data().name;
+			this.setState({Fnam: Studentname, Name: Studentname});
+		})
+		const fnam=this.state.Fnam;
+		const imageName=this.state.Name;
+		const url = firebase.storage().ref('StudentsTrainingImage/'+fnam+'/'+imageName).downloadFile();
+		this.setState({UL: url})
+		console.log(url);
+		console.log('StudentsTrainingImage/'+fnam+'/'+imageName);
+		
+	}
+	Move=()=>{
+		this.setState({progressBarStatus: false});
+	}
+    handleChoosePhoto = key => val => {
+		var user = firebase.auth().currentUser;
+		var uid=user.uid;
+		var docRef = firebase.firestore().collection("StudentsData").doc(uid);
+		docRef.get().then((doc)=> {
+            const Studentname=doc.data().name;
+			this.setState({Fnam: Studentname, Name: Studentname});
+		})
 		const options = {
 			noData: true,
 		};
     	ImagePicker.showImagePicker(options, response => {
 			if (response.uri) {
 				this.setState({ photo: response });
-
 				const image = {
 					path : response.uri.toString(),
 				};
+				this.setState({progressBarStatus: true, [key]: response})
+				this.uploadImage(image, this.state.Fnam, this.state.Name)
+          			.then(() => this.Move() )
+          			.catch((error) => {
+              		console.log(error.message);
+              		Alert.alert('Error', 'Something went wrong');
+          		});
 			}
     	});
-  	}
+	  }
+	uploadImage = async (image, fnam, imageName) => {
+		return firebase.storage().ref('StudentsTrainingImage/'+fnam+'/'+imageName).putFile(image.path);
+	}
 	_call2(){
 		 firebase.auth().signOut();
-		 Actions.login();
+		 Actions.login({type: 'reset'});
 	}
 	alert(){
+		this.callme();
 		alert('This feature coming on next update')
 	}
 	dhome(){
 		Actions.studentHome()
 	}
 	render(){
-		const { photo } = this.state;
+		const { photo, progressBarStatus } = this.state;
 		return (
 			<Fragment>
 				<View style={ styles.container }>
 					<View style={styles.topDrawer}>
-						<TouchableOpacity style={{ backgroundColor: 'white', alignItems: 'center', width: 135 }} onPress={this.handleChoosePhoto}>
-              			<Text style={{ color: 'black', padding: 5 }}>Choose Photo</Text>
-            			</TouchableOpacity>
-					    {photo && (
-            				<Image source={{ uri: photo.uri }} style={styles.userImg} />
-          				)}
+						<TouchableOpacity onPress={this.handleChoosePhoto('ProfilePic')}>
+						<View
+							style={[styles.avatar, styles.avatarContainer, {marginBottom: 20,}]}>
+							{this.state.ProfilePic === null ? (
+							<Text style={{color: '#fff',}}>Upload Profile Pic</Text>
+							) : (
+							<Image style={styles.avatar} source={this.state.ProfilePic} />
+							)}
+							{progressBarStatus && (
+                  				<ProgressBarAndroid styleAttr="Horizontal" color="#fff" />
+                			)}
+						</View>
+						</TouchableOpacity>
 					</View>
 						<View style={styles.bottomDrawer}>
 						<TouchableOpacity style={styles.drawerbars} onPress={this.dhome}>
@@ -66,6 +114,7 @@ export default class next extends Component {
 						<TouchableOpacity style={styles.drawerbars} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>
 				  		</TouchableOpacity>
+						  
 					</View>
 				</View>
 			</Fragment>
@@ -82,6 +131,17 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignContent: 'center',
 		alignItems: 'center'
+	},
+	avatarContainer: {
+		borderColor: '#9B9B9B',
+		borderWidth: 1 / PixelRatio.get(),
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	avatar: {
+		borderRadius: 0,
+		width: 250,
+		height: 270,
 	},
 	bottomDrawer: {
 		flex: 2,

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text,Image, View, StyleSheet,StatusBar, Alert, TouchableOpacity,PixelRatio, ProgressBarAndroid } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import firebase from 'react-native-firebase';
-
 export default class Attend extends Component {
   state={
     i: 1,
@@ -22,7 +21,6 @@ export default class Attend extends Component {
   }
   Move=()=>{
     this.setState({progressBarStatus: false});
-
   }
   handleChoosePhoto = key => val => {
     var user = firebase.auth().currentUser;
