@@ -74,7 +74,7 @@ export default class next extends Component {
 		alert("This feature is coming in next update.")
 	}
 	callprofile(){
-		Actions.profilepic();
+		Actions.profilePage();
 	}
 	dhome(){
 		Actions.studentHome()

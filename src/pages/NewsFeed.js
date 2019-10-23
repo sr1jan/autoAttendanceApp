@@ -199,11 +199,15 @@ export default class NewsFeed extends Component{
 					</Fab>
 					<Footer>
 						<FooterTab>
+							<Button vertical active onPress={Actions.newsFeed}>
+								<Icon name="home" />
+								<Text>Home</Text>
+							</Button>
 							<Button vertical onPress={this.callDashboard}>
 								<Icon name="apps" />
 								<Text>Apps</Text>
 							</Button>
-							<Button vertical active>
+							<Button vertical onPress={Actions.profilePage}>
 								<Icon active name="md-person" />
 								<Text>Profile</Text>
 							</Button>
@@ -226,7 +230,7 @@ const styles = StyleSheet.create({
 	},
 
 	card: {
-		marginHorizontal: 30,
+		marginHorizontal: 10,
 	},
 
 	text: {

@@ -122,7 +122,7 @@ export default class next extends Component {
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>
-				  		</TouchableOpacity>
+						</TouchableOpacity>
 					</View>
 				</View>
 			</Fragment>

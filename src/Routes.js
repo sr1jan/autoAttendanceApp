@@ -17,7 +17,7 @@ import ImageTest from './pages/ImageTest';
 import NewsFeed from './pages/NewsFeed';
 import NewPost from './components/NewPost';
 
-import Profilepic from './pages/Profilepic';
+import ProfilePage from './pages/ProfilePage';
 export default class Routes extends Component {
 	render() {
 		return( 
@@ -32,6 +32,7 @@ export default class Routes extends Component {
 				<Scene key="studentSignUp" component={StudentSignUp} title="Student SignUp" hideNavBar={true}/>
 				<Scene key="newsFeed" component={NewsFeed} title="Discussion" hideNavBar={true}/>
 				<Scene key="newPost" component={NewPost} title="New Post" hideNavBar={true}/>
+				<Scene key="profilePage" component={ProfilePage} hideNavBar={true}/>
 
 				<drawer key="drawer"
 					drawer
@@ -57,7 +58,7 @@ export default class Routes extends Component {
 					<Scene key ="root">
 				<Scene key="studentHome" component={StudentHome} hideNavBar={true} />
 				<Scene key="imageTest" component={ImageTest} title="Image upload" hideNavBar={true}/>
-				<Scene key="profilepic" component={Profilepic} hideNavBar={true}/>
+				<Scene key="profilePage" component={ProfilePage} hideNavBar={true}/>
 				
 				</Scene>
 				</drawer>

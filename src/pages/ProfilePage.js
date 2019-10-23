@@ -1,8 +1,27 @@
 import React, { Fragment, Component} from 'react';
 import {Actions} from 'react-native-router-flux';
-import { View, Text, StyleSheet ,PixelRatio, Image, ProgressBarAndroid, TouchableOpacity } from 'react-native';
+import { View, StyleSheet ,PixelRatio, Image, ProgressBarAndroid, TouchableOpacity } from 'react-native';
 import firebase from '@react-native-firebase/app';
 import ImagePicker from 'react-native-image-picker';
+import { 
+	Container, 
+	Header, 
+	StyleProvider,
+	Content, 
+	Card, 
+	Fab,
+	CardItem, 
+	Thumbnail, 
+	Text, 
+	Button, 
+	Icon, 
+	Left, 
+	Body, 
+	Right,
+	Footer,
+	FooterTab,
+} from 'native-base';
+
 export default class next extends Component {
 	state = {
 		oneTime: 1,
@@ -13,7 +32,22 @@ export default class next extends Component {
 		ProfilePic: null,
 		UL: null,
 		access: false,
+		person: '',
+		profileImg: '',
+		profileName: '',
 	};
+	
+	componentDidMount = () => {
+		var userData = firebase.auth().currentUser;
+		var docRef = firebase.firestore().collection('StudentsData').doc(userData.uid);
+		this.setState({ profileImg: userData.photoURL });
+		this.setState({ profileName: userData.displayName });
+		docRef.get().then((doc) => {
+			var person = doc.data().dasbord;
+			this.setState({ person: person });
+		});
+	}
+
 	profile= async () => {
 		var user = firebase.auth().currentUser;
 		var uid=user.uid;
@@ -76,6 +110,15 @@ export default class next extends Component {
 	dhome(){
 		Actions.studentHome()
 	}
+
+	callDashboard = () => {
+		if(this.state.person == 'student'){
+			Actions.studentDrawer();
+		}else{
+			Actions.drawer();
+		}
+	}
+
 	render(){
 		const { UL, oneTime, progressBarStatus } = this.state;
 		if(oneTime<=10){
@@ -84,6 +127,7 @@ export default class next extends Component {
 			{this.profile()}
 		}
 		return (
+			<Container>
 			<Fragment>
 				<View style={ styles.container }>
 					<View style={styles.topDrawer}>
@@ -125,7 +169,28 @@ export default class next extends Component {
 				  		</TouchableOpacity>
 					</View>
 				</View>
+				<Footer>
+					<FooterTab>
+							<Button vertical active onPress={Actions.newsFeed}>
+								<Icon name="home" />
+								<Text>Home</Text>
+							</Button>
+						<Button vertical onPress={this.callDashboard}>
+							<Icon name="apps" />
+							<Text>Apps</Text>
+						</Button>
+						<Button vertical onPress={Actions.profilePage}>
+							<Icon active name="md-person" />
+							<Text>Profile</Text>
+						</Button>
+						<Button vertical onPress={this.logout}>
+							<Icon name="exit" />
+							<Text>Logout</Text>
+						</Button>
+					</FooterTab>
+				</Footer>
 			</Fragment>
+			</Container>
 		);
 	}
 }
