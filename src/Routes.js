@@ -14,6 +14,7 @@ import AttendanceUpdatedPage from './components/AttendanceUpdatedPage';
 import StudentDrawerContent from './components/StudentDrawerContent';
 import StudentHome from './pages/StudentHome';
 import ImageTest from './pages/ImageTest';
+import Profilepic from './pages/Profilepic';
 export default class Routes extends Component {
 	render() {
 		return( 
@@ -26,6 +27,7 @@ export default class Routes extends Component {
 				<Scene key="teacherORstudent" component={TeacherORstudent} hideNavBar={true}/>
 				<Scene key="TeacherSignUp" component={TeacherSignUp} title="Teacher SignUp" hideNavBar={true}/>
 				<Scene key="studentSignUp" component={StudentSignUp} title="Student SignUp" hideNavBar={true}/>
+				
 				<drawer key="drawer"
 					drawer
 					contentComponent={DrawerContent}
@@ -49,6 +51,8 @@ export default class Routes extends Component {
 					<Scene key ="root">
 				<Scene key="studentHome" component={StudentHome} hideNavBar={true} />
 				<Scene key="imageTest" component={ImageTest} title="Image upload" hideNavBar={true}/>
+				<Scene key="profilepic" component={Profilepic} hideNavBar={true}/>
+				
 				</Scene>
 				</drawer>
 		    </Scene>

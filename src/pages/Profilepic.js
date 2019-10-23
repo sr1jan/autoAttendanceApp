@@ -103,22 +103,22 @@ export default class next extends Component {
 					</View>
 						<View style={styles.bottomDrawer}>
 						<TouchableOpacity style={styles.drawerbars} onPress={this.dhome}>
-							<Text style={styles.logoText}>Home</Text>
+							<Text style={styles.logoText}>Name: {this.state.Name}</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this._call}>
-							<Text style={styles.logoText}>Mark Attendance</Text>
+							<Text style={styles.logoText}>Live Attendance: </Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
-							<Text style={styles.logoText}>Time Table</Text>
+							<Text style={styles.logoText}>Your Time Table</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
-							<Text style={styles.logoText}>Broadcast</Text>
+							<Text style={styles.logoText}>content</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
-							<Text style={styles.logoText}>Create event</Text>
+							<Text style={styles.logoText}>Update Profile Pic</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
-							<Text style={styles.logoText}>Mark free lecture</Text>
+							<Text style={styles.logoText}>Delete Your Profile</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>

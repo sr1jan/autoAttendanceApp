@@ -27,6 +27,11 @@ export default class next extends Component {
 		const url = firebase.app().storage('gs://faceattendance-253619-4f9k7').ref('StudentsTrainingImage/'+fnam+'/'+imageName)
 		const imgurl = await url.getDownloadURL();
 		this.setState({UL: imgurl})
+		user.updateProfile({
+			displayName: this.state.Name,
+			photoURL: imgurl,
+		  }).catch(error => this.setState({ errorMessage: error.message}))
+		console.log(user);
 	}
 	Move=()=>{
 		this.setState({progressBarStatus: false});
@@ -66,8 +71,10 @@ export default class next extends Component {
 		 Actions.login({ type: 'reset' });
 	}
 	alert(){
-		this.callme();
-		alert('This feature coming on next update')
+		alert("This feature is coming in next update.")
+	}
+	callprofile(){
+		Actions.profilepic();
 	}
 	dhome(){
 		Actions.studentHome()
@@ -114,7 +121,10 @@ export default class next extends Component {
 							<Text style={styles.logoText}>Register complaint</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this.alert}>
-							<Text style={styles.logoText}>Bole jai maa kaali</Text>
+							<Text style={styles.logoText}>Syllabus</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.drawerbars} onPress={this.callprofile}>
+							<Text style={styles.logoText}>Detail Profile</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.drawerbars} onPress={this._call2}>
 				  			<Text style={styles.logoText}>Logout</Text>
