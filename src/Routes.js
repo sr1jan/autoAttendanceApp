@@ -14,6 +14,9 @@ import AttendanceUpdatedPage from './components/AttendanceUpdatedPage';
 import StudentDrawerContent from './components/StudentDrawerContent';
 import StudentHome from './pages/StudentHome';
 import ImageTest from './pages/ImageTest';
+import NewsFeed from './pages/NewsFeed';
+import NewPost from './components/NewPost';
+
 export default class Routes extends Component {
 	render() {
 		return( 
@@ -26,6 +29,9 @@ export default class Routes extends Component {
 				<Scene key="teacherORstudent" component={TeacherORstudent} hideNavBar={true}/>
 				<Scene key="TeacherSignUp" component={TeacherSignUp} title="Teacher SignUp" hideNavBar={true}/>
 				<Scene key="studentSignUp" component={StudentSignUp} title="Student SignUp" hideNavBar={true}/>
+				<Scene key="newsFeed" component={NewsFeed} title="Discussion" hideNavBar={true}/>
+				<Scene key="newPost" component={NewPost} title="New Post" hideNavBar={true}/>
+
 				<drawer key="drawer"
 					drawer
 					contentComponent={DrawerContent}
@@ -34,11 +40,12 @@ export default class Routes extends Component {
 					hideNavBar={true}
 				>
 					<Scene key ="root">
-				<Scene key="home" component={Home} hideNavBar={true} />
-				    <Scene key="attendanceForm" component={AttendanceForm} hideNavBar={true}/>
-				       	<Scene key="attendanceUpdatedPage" component={AttendanceUpdatedPage} hideNavBar={true}/>
-				</Scene>
+					<Scene key="home" component={Home} hideNavBar={true} />
+						<Scene key="attendanceForm" component={AttendanceForm} hideNavBar={true}/>
+							<Scene key="attendanceUpdatedPage" component={AttendanceUpdatedPage} hideNavBar={true}/>
+					</Scene>
 				</drawer>		   
+
 				<drawer key="studentDrawer"
 					drawer
 					contentComponent={StudentDrawerContent}
@@ -47,9 +54,9 @@ export default class Routes extends Component {
 					hideNavBar={true}
 				>
 					<Scene key ="root">
-				<Scene key="studentHome" component={StudentHome} hideNavBar={true} />
-				<Scene key="imageTest" component={ImageTest} title="Image upload" hideNavBar={true}/>
-				</Scene>
+						<Scene key="studentHome" component={StudentHome} hideNavBar={true} />
+						<Scene key="imageTest" component={ImageTest} title="Image upload" hideNavBar={true}/>
+					</Scene>
 				</drawer>
 		    </Scene>
 		  </Router>

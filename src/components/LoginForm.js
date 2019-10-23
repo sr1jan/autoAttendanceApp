@@ -18,10 +18,10 @@ export default class Tform extends Component {
 			var docRef = firebase.firestore().collection("StudentsData").doc(uid);
 			docRef.get().then(function(doc) {
 				if(doc.data().dasbord=="student"){
-					Actions.studentDrawer({type: 'reset'});
+					Actions.newsFeed({type: 'reset'});
 				}
 				else{
-					Actions.drawer({type : 'reset'});
+					Actions.newsFeed({type : 'reset'});
 				}
 			});
 		}
@@ -30,7 +30,6 @@ export default class Tform extends Component {
 		}
 	}
 	call2(){
-		
 		Actions.drawer({type: 'reset'});
 	}
 
