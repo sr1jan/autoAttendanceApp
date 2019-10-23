@@ -11,7 +11,7 @@ export default class Tform extends Component {
 		errorMessage: null,
 		progressBarStatus: false,
 	}
-	test(){
+	LoginCall(){
 		{
 			var user = firebase.auth().currentUser;
 			var uid=user.uid;
@@ -23,10 +23,8 @@ export default class Tform extends Component {
 				else{
 					Actions.newsFeed({type : 'reset'});
 				}
-			});
-		}
-		{
-			
+			})
+			.catch(error => this.setState({progressBarStatus: false }));
 		}
 	}
 	call2(){
@@ -41,8 +39,8 @@ export default class Tform extends Component {
 			firebase
 			.auth()
 			.signInWithEmailAndPassword(this.state.email, this.state.password)
-			.then(() => this.test())
-			.catch(error => this.setState({ errorMessage: error.message }))
+			.then(() => this.LoginCall())
+			.catch(error => this.setState({ errorMessage: error.message, progressBarStatus: false}))
 		}
 	}
 

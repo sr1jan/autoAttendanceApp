@@ -79,7 +79,7 @@ export default class Home extends Component {
           </TouchableOpacity>
         </View> 
         <View style={styles.container}>
-        <Text style={styles.logoText}>Hello {this.state.Name}</Text>
+        <Text style={styles.logoText}>{this.state.Name}</Text>
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity onPress={this.markAttendance}> 
               <ImageLoader
