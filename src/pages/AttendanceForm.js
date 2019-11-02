@@ -3,7 +3,7 @@ import { Text, View, StyleSheet,StatusBar, Alert, TouchableOpacity, ProgressBarA
 import {Actions} from 'react-native-router-flux';
 import RNPickerSelect from 'react-native-picker-select';
 import ImagePicker from 'react-native-image-picker';
-import firebase from 'react-native-firebase';
+import firebase from '@react-native-firebase/app';
 class ImageLoader extends Component {
   state = {
     opacity: new Animated.Value(0),

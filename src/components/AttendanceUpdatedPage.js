@@ -4,7 +4,7 @@ import {Actions} from 'react-native-router-flux';
 export default class BasicExample extends React.Component {
 	componentDidMount(){
     setTimeout(function(){
-    	Actions.drawer();
+    	Actions.teacherHome();
   }, 1500);
   }
   render() {
