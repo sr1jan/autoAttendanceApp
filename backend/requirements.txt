@@ -1,0 +1,11 @@
+google-cloud-storage==1.13.2
+google-cloud
+firebase_admin
+numpy
+opencv-python
+mtcnn
+keras
+joblib
+Pillow
+sklearn
+tensorflow
